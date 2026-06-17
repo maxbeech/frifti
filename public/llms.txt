@@ -1,0 +1,42 @@
+# ClaimWise HQ
+
+> Free 50-state unclaimed-property (unclaimed money) finder and claim guide.
+> Search every official US state treasury unclaimed-property database in one
+> place, then follow a step-by-step claim journey — the exact documents,
+> notarization rules, common rejection reasons and a typical processing-time
+> estimate for owners, heirs and businesses. ClaimWise HQ routes users ONLY to
+> free official government portals and the NAUPA-sponsored MissingMoney.com, and
+> never charges a finder's fee.
+
+Site: https://claimwisehq.vercel.app
+
+## What it does
+- 50-state + DC search hub: one page per state linking to that state's official, free unclaimed-property program (run by the State Treasurer, Comptroller/Controller, or Department of Revenue).
+- Claim guide engine: pick the property type, who is claiming (owner / heir / business) and the value; get the required documents, ordered steps, whether a notarized affidavit is needed, common rejection reasons, and a typical timeline in weeks.
+- Asset-type guidance: bank accounts, insurance proceeds, wages & payroll, stocks/bonds/dividends, utility & rental deposits, safe deposit box contents, and refunds/credits/gift cards.
+
+## Key facts
+- Unclaimed property is money/assets a holder could not return to you (dormant bank accounts, uncashed checks, insurance, final paychecks, utility deposits, stocks/dividends). After a dormancy period it is turned over to the state, which holds it indefinitely until claimed.
+- Searching and claiming through an official state program is ALWAYS FREE. You never need to pay a finder's fee to claim your own money.
+- The authoritative free searches are your state's own program and MissingMoney.com, the multi-state search sponsored by the National Association of Unclaimed Property Administrators (NAUPA). The official NAUPA state directory is https://unclaimed.org/search/.
+- Roughly 1 in 7 Americans has unclaimed property; an estimated tens of billions of dollars sit unclaimed in US state treasuries.
+- Typical timelines (general estimate, not a state SLA): straightforward owner claim ~2–8 weeks; heir claims add ~4–12 weeks (death certificate + probate); business claims add ~2–6 weeks; high-value claims (commonly ≥ $1,000) usually need a notarized affidavit.
+- Common documents: government photo ID; completed state claim form; proof of SSN/Taxpayer ID; proof of the address on the record (owners); death certificate + relationship + probate docs (heirs); incorporation papers + EIN + proof of authority (businesses).
+
+## Dormancy (typical, varies by state under RUUPA 2016)
+- Wages & payroll: about 1 year.
+- Bank accounts, safe deposit boxes, many refunds: about 3–5 years.
+- Insurance, stocks & dividends: about 3 years.
+Confirm the exact dormancy period and rules with the administering state agency.
+
+## Pages
+- /                                       Search hub + claim guide builder + FAQ
+- /states                                 Index of all 50 states + DC
+- /unclaimed-property/[state]             Per-state search + claim guide (51 pages)
+- /unclaimed-property/[state]/[asset-type] Per-state, per-property-type guide (357 pages)
+- /how-to-claim                           Step-by-step claim guide
+- /missingmoney-alternative               How ClaimWise HQ complements MissingMoney.com
+- /pricing                                Free tier + Pro claim tracker
+
+## Disclaimer
+ClaimWise HQ is a free guide, not a government agency. It routes you to official, free state unclaimed-property programs and to MissingMoney.com. Always claim directly through the official state portal. Requirements, dormancy periods and timelines are set by each state — confirm with the administering agency.
