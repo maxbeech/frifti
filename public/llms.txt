@@ -1,0 +1,33 @@
+# ClaimWise HQ
+
+> ClaimWise HQ is a free tool that helps people find and claim unclaimed property
+> (forgotten money) held by U.S. state governments. It links to the official state
+> treasury search portal for all 50 states, Washington D.C., and Puerto Rico, and
+> generates a step-by-step claim guide with the exact documents, timelines, and
+> submission methods for each claim.
+
+## What it does
+- Directory of all 52 official U.S. state/territory unclaimed-property search portals (authoritative government sites).
+- A guided claim wizard: pick a state, property type, amount, and who you're claiming for; it returns a document checklist, a complexity tier, a timeline estimate, and ordered steps.
+- Programmatic guides for each state and each property type (bank accounts, insurance, wages, securities, utility deposits, safe-deposit-box contents).
+
+## Key facts (accurate as of June 2026)
+- Searching for and claiming your own unclaimed property from a state is ALWAYS FREE. States never charge the rightful owner. Paid "finder" firms only point to property already searchable for free.
+- U.S. states collectively hold an estimated $70 billion in unclaimed property. About 1 in 7 Americans has unclaimed property.
+- Property is reported to the state of the owner's last known address, so people who have moved should check every state they've lived, worked, or banked in.
+- Dormancy periods (time before property is escheated to the state) are commonly 3 to 5 years and vary by state and property type.
+- Standard documents to claim: government photo ID, proof of Social Security number, proof of current address. Estate/heir claims add a death certificate and proof of heirship. Higher-value claims (often over $1,000) usually need a notarized claim form.
+- Typical payout timeline: ~6 to 10 weeks for straightforward cash claims; ~12 to 26 weeks for securities, estate, or high-value claims.
+- The official multi-state aggregator is MissingMoney.com (run by NAUPA), but it does not cover every state; ClaimWise HQ links every official state portal directly.
+
+## Pricing
+- Free: 50-state portal directory + claim wizard + all guides.
+- Pro ($9.99/month, launching soon): multi-state claim tracking dashboard, document storage, 30/60/90-day reminder emails, and claim-history PDF export.
+
+## Disclaimer
+ClaimWise HQ is independent and not affiliated with NAUPA, MissingMoney.com, or any state treasury. It provides informational guidance, not legal or financial advice. The official state portal is always the authoritative source for a given claim.
+
+## Site
+- Home: https://claimwisehq.vercel.app/
+- State pages: https://claimwisehq.vercel.app/unclaimed-property/{state-slug}
+- Guides: https://claimwisehq.vercel.app/blog
