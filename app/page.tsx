@@ -6,6 +6,7 @@ import { STATES } from "@/lib/states";
 import { ASSET_TYPES } from "@/lib/assets";
 import { NATIONAL_FACTS } from "@/lib/claims";
 import { HOME_FAQ, faqJsonLd } from "@/lib/faq";
+import { PRODUCTS } from "@/lib/products";
 
 export default function Home() {
   const softwareLd = {
@@ -39,7 +40,7 @@ export default function Home() {
           </h1>
           <p className="mx-auto max-w-2xl text-lg text-slate-600">
             U.S. states are holding an estimated ${NATIONAL_FACTS.totalHeldBillions} billion in forgotten bank accounts,
-            paychecks, insurance and deposits. ClaimWise HQ takes you straight to the official state portal and
+            paychecks, insurance and deposits. Frifti takes you straight to the official state portal and
             builds your exact claim checklist — free.
           </p>
         </div>
@@ -90,7 +91,11 @@ export default function Home() {
       {/* Pricing */}
       <section id="pricing" className="space-y-5">
         <h2 className="text-2xl font-bold text-slate-900">Pricing</h2>
-        <div className="grid gap-4 sm:grid-cols-2">
+        <p className="max-w-2xl text-sm text-slate-600">
+          Searching and claiming from the state is always free. The optional one-time kits below are for people who
+          want the paperwork pre-filled and organised — never a fee to claim, and never a subscription.
+        </p>
+        <div className="grid gap-4 lg:grid-cols-3">
           <div className="rounded-2xl border border-slate-200 bg-white p-6">
             <h3 className="font-semibold text-slate-800">Free</h3>
             <p className="mt-1 text-3xl font-bold text-slate-900">$0</p>
@@ -98,24 +103,24 @@ export default function Home() {
               <li>50-state official portal directory</li>
               <li>Guided claim wizard + document checklist</li>
               <li>Per-state and per-asset claim guides</li>
+              <li>Timeline & complexity estimate</li>
             </ul>
             <Link href="#search" className="mt-5 inline-block rounded-lg bg-emerald-600 px-4 py-2 text-sm font-semibold text-white hover:bg-emerald-700">
               Start a free claim
             </Link>
           </div>
-          <div className="rounded-2xl border border-emerald-200 bg-emerald-50 p-6">
-            <h3 className="font-semibold text-slate-800">Pro tracker <span className="ml-1 rounded bg-emerald-600 px-1.5 py-0.5 text-[10px] font-bold text-white align-middle">SOON</span></h3>
-            <p className="mt-1 text-3xl font-bold text-slate-900">$9.99<span className="text-base font-medium text-slate-500">/mo</span></p>
-            <ul className="mt-4 space-y-1 text-sm text-slate-600">
-              <li>Track multiple claims across states</li>
-              <li>Document storage per claim</li>
-              <li>30 / 60 / 90-day reminder emails</li>
-              <li>Claim-history PDF export</li>
-            </ul>
-            <Link href="/api/checkout" className="mt-5 inline-block rounded-lg border border-emerald-600 px-4 py-2 text-sm font-semibold text-emerald-700 hover:bg-white">
-              Join the waitlist
-            </Link>
-          </div>
+          {PRODUCTS.map((p) => (
+            <div key={p.id} className="rounded-2xl border border-emerald-200 bg-emerald-50 p-6">
+              <h3 className="font-semibold text-slate-800">{p.name}</h3>
+              <p className="mt-1 text-3xl font-bold text-slate-900">{p.priceLabel}<span className="text-base font-medium text-slate-500"> one-time</span></p>
+              <ul className="mt-4 space-y-1 text-sm text-slate-600">
+                {p.includes.slice(0, 4).map((f) => <li key={f}>{f}</li>)}
+              </ul>
+              <Link href={`/premium?product=${p.id}`} className="mt-5 inline-block rounded-lg border border-emerald-600 px-4 py-2 text-sm font-semibold text-emerald-700 hover:bg-white">
+                See what&apos;s inside →
+              </Link>
+            </div>
+          ))}
         </div>
       </section>
 

@@ -1,6 +1,6 @@
-# ClaimWise HQ
+# Frifti
 
-> ClaimWise HQ is a free tool that helps people find and claim unclaimed property
+> Frifti is a free tool that helps people find and claim unclaimed property
 > (forgotten money) held by U.S. state governments. It links to the official state
 > treasury search portal for all 50 states, Washington D.C., and Puerto Rico, and
 > generates a step-by-step claim guide with the exact documents, timelines, and
@@ -16,18 +16,22 @@
 - U.S. states collectively hold an estimated $70 billion in unclaimed property. About 1 in 7 Americans has unclaimed property.
 - Property is reported to the state of the owner's last known address, so people who have moved should check every state they've lived, worked, or banked in.
 - Dormancy periods (time before property is escheated to the state) are commonly 3 to 5 years and vary by state and property type.
-- Standard documents to claim: government photo ID, proof of Social Security number, proof of current address. Estate/heir claims add a death certificate and proof of heirship. Higher-value claims (often over $1,000) usually need a notarized claim form.
+- Standard documents to claim: government photo ID, proof of Social Security number, proof of current address. Estate/heir claims add a death certificate and proof of heirship; securities claims add brokerage statements; higher-value claims often need a notarized claim form.
 - Typical payout timeline: ~6 to 10 weeks for straightforward cash claims; ~12 to 26 weeks for securities, estate, or high-value claims.
-- The official multi-state aggregator is MissingMoney.com (run by NAUPA), but it does not cover every state; ClaimWise HQ links every official state portal directly.
+- The official multi-state aggregator is MissingMoney.com (run by NAUPA), but it does not cover every state; Frifti links every official state portal directly.
 
 ## Pricing
-- Free: 50-state portal directory + claim wizard + all guides.
-- Pro ($9.99/month, launching soon): multi-state claim tracking dashboard, document storage, 30/60/90-day reminder emails, and claim-history PDF export.
+- Free: 50-state portal directory + claim wizard + document checklist + all guides. Searching and claiming from a state is always free.
+- Claim Kit ($14.99, one-time): an optional pack that pre-fills and organises a single claim — a cover letter, an explained document checklist, a dated follow-up schedule, a submission walkthrough, and rejection-avoidance tips. Not a subscription, never required to claim.
+- Estate Claim Report ($49, one-time): the Claim Kit written for heirs/executors, plus a multi-state heir-search plan and affidavit-of-heirship guidance.
+- Frifti also recommends a few relevant partner services (e.g. online notarisation for notarised forms, estate help, free tools to find old 401(k)s and lost life-insurance policies). Some are affiliate links; free/official tools are recommended alongside. We never charge to claim or take a cut of recovered property.
 
 ## Disclaimer
-ClaimWise HQ is independent and not affiliated with NAUPA, MissingMoney.com, or any state treasury. It provides informational guidance, not legal or financial advice. The official state portal is always the authoritative source for a given claim.
+Frifti is independent and not affiliated with NAUPA, MissingMoney.com, or any state treasury. It provides informational guidance, not legal or financial advice. The official state portal is always the authoritative source for a given claim.
 
 ## Site
-- Home: https://claimwisehq.vercel.app/
-- State pages: https://claimwisehq.vercel.app/unclaimed-property/{state-slug}
-- Guides: https://claimwisehq.vercel.app/blog
+- Home: https://frifti.com/
+- State pages: https://frifti.com/unclaimed-property/{state-slug}
+- Guides: https://frifti.com/blog
+- Claim Kit & Estate Report: https://frifti.com/premium
+- Affiliate disclosure: https://frifti.com/disclosure

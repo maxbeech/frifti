@@ -7,7 +7,7 @@ export const HOME_FAQ: QA[] = [
   },
   {
     q: "How do I find unclaimed money in my name?",
-    a: "Choose your state on ClaimWise HQ to open the official state treasury portal, then search your name, former names, and previous addresses. We also generate a free checklist of the exact documents and steps to file the claim.",
+    a: "Choose your state on Frifti to open the official state treasury portal, then search your name, former names, and previous addresses. We also generate a free checklist of the exact documents and steps to file the claim.",
   },
   {
     q: "How long does it take to get the money?",
@@ -18,7 +18,7 @@ export const HOME_FAQ: QA[] = [
     a: "A government photo ID, proof of your Social Security number, and proof of your current address cover most claims. Estate claims add a death certificate and proof of heirship; securities claims add brokerage statements; higher-value claims often need a notarized form.",
   },
   {
-    q: "Which states does ClaimWise HQ cover?",
+    q: "Which states does Frifti cover?",
     a: "All 50 states plus Washington, D.C. and Puerto Rico — 52 official unclaimed-property programs. Each links directly to that government's authoritative search portal.",
   },
   {

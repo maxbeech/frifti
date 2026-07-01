@@ -6,14 +6,14 @@ import { STATES } from "@/lib/states";
 import { faqJsonLd, type QA } from "@/lib/faq";
 
 export const metadata: Metadata = {
-  title: "MissingMoney.com Alternative — ClaimWise HQ",
+  title: "MissingMoney.com Alternative — Frifti",
   description: "A free MissingMoney.com alternative: all 52 official state unclaimed-property portals plus a guided claim wizard with document checklists and timelines.",
   alternates: { canonical: `${SITE.url}/missingmoney-alternative` },
 };
 
 const faq: QA[] = [
-  { q: "Is ClaimWise HQ better than MissingMoney.com?", a: "MissingMoney.com is a useful multi-state search, but it doesn't cover every state and stops at the search. ClaimWise HQ links to all 52 official state portals (including states MissingMoney omits) and adds a guided claim wizard that tells you exactly which documents and steps each claim needs." },
-  { q: "Does it cost anything?", a: "No. Like searching a state portal directly, ClaimWise HQ is free. Claiming your own property from a state is always free — never pay a finder." },
+  { q: "Is Frifti better than MissingMoney.com?", a: "MissingMoney.com is a useful multi-state search, but it doesn't cover every state and stops at the search. Frifti links to all 52 official state portals (including states MissingMoney omits) and adds a guided claim wizard that tells you exactly which documents and steps each claim needs." },
+  { q: "Does it cost anything?", a: "No. Like searching a state portal directly, Frifti is free. Claiming your own property from a state is always free — never pay a finder." },
 ];
 
 const rows = [
@@ -33,7 +33,7 @@ export default function MissingMoneyAlternative() {
         <h1 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">A free MissingMoney.com alternative</h1>
         <p className="max-w-2xl text-lg text-slate-600">
           MissingMoney.com searches several states at once, but it doesn&apos;t cover every state and it leaves you to
-          figure out the claim yourself. ClaimWise HQ covers all {STATES.length} official programs and walks you
+          figure out the claim yourself. Frifti covers all {STATES.length} official programs and walks you
           through the actual claim — for free.
         </p>
         <Link href="/#search" className="inline-block rounded-lg bg-emerald-600 px-5 py-2.5 text-sm font-semibold text-white hover:bg-emerald-700">
@@ -47,7 +47,7 @@ export default function MissingMoneyAlternative() {
             <tr>
               <th className="px-4 py-3 font-semibold">Feature</th>
               <th className="px-4 py-3 font-semibold">MissingMoney.com</th>
-              <th className="px-4 py-3 font-semibold text-emerald-700">ClaimWise HQ</th>
+              <th className="px-4 py-3 font-semibold text-emerald-700">Frifti</th>
             </tr>
           </thead>
           <tbody>
@@ -73,7 +73,7 @@ export default function MissingMoneyAlternative() {
       </section>
 
       <p className="text-xs text-slate-400">
-        MissingMoney.com is operated by NAUPA. ClaimWise HQ is independent and not affiliated with NAUPA or
+        MissingMoney.com is operated by NAUPA. Frifti is independent and not affiliated with NAUPA or
         MissingMoney.com. Comparison reflects publicly available features as of June 2026.
       </p>
     </div>

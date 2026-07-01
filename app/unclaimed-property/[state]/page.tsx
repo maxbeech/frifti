@@ -31,7 +31,7 @@ export async function generateMetadata({ params }: { params: Promise<{ state: st
 
 function stateFaq(name: string, agency: string): QA[] {
   return [
-    { q: `How do I search for unclaimed property in ${name}?`, a: `Use the official ${agency} portal to search your name, former names, and previous addresses. ClaimWise HQ links you straight to it and builds your free claim checklist.` },
+    { q: `How do I search for unclaimed property in ${name}?`, a: `Use the official ${agency} portal to search your name, former names, and previous addresses. Frifti links you straight to it and builds your free claim checklist.` },
     { q: `Is it free to claim unclaimed property in ${name}?`, a: `Yes. ${name} never charges the rightful owner to claim their property. Avoid paid finder firms — you can claim directly from the state for free.` },
     { q: `How long does a ${name} unclaimed property claim take?`, a: `Most straightforward cash claims are paid in roughly 6 to 10 weeks after a complete submission; complex, securities, or estate claims can take 12 to 26 weeks.` },
   ];
@@ -123,7 +123,7 @@ export default async function StatePage({ params }: { params: Promise<{ state: s
       </section>
 
       <p className="text-xs text-slate-400">
-        ClaimWise HQ is an independent guide and is not affiliated with {s.agency} or any government body. The
+        Frifti is an independent guide and is not affiliated with {s.agency} or any government body. The
         official portal linked above is always the authoritative source for {s.name} claims.
       </p>
     </div>

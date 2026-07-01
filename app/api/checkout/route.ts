@@ -1,59 +1,57 @@
-import { NextResponse } from "next/server";
+import { NextResponse, type NextRequest } from "next/server";
+import { getProduct, isProductPurchasable } from "@/lib/products";
+import { createCheckoutSession } from "@/lib/stripe";
+import { getState } from "@/lib/states";
+import { getAsset } from "@/lib/assets";
+import { SITE } from "@/lib/site";
 
-// Stripe checkout endpoint. Degrades gracefully when STRIPE_* env vars are absent:
-// returns a friendly "launching shortly" JSON instead of a 500, so the Pro waitlist
-// button never breaks before billing is wired up.
-export async function GET() {
-  return handle();
+// One-time Claim Kit / Estate Report checkout. The claim context (state/asset/owner/value)
+// is carried in query params and stored as Stripe session metadata so /success can rebuild
+// and deliver the exact personalised kit after payment — no database required.
+//
+// Graceful degradation: if billing for the requested product isn't configured, we redirect
+// back to /premium (which shows an honest "coming soon" state) rather than erroring.
+
+export async function GET(req: NextRequest) {
+  return handle(req);
+}
+export async function POST(req: NextRequest) {
+  return handle(req);
 }
 
-export async function POST() {
-  return handle();
-}
+async function handle(req: NextRequest) {
+  const sp = req.nextUrl.searchParams;
+  const productId = sp.get("product") ?? "claim-kit";
+  const product = getProduct(productId);
 
-async function handle() {
-  const secret = process.env.STRIPE_SECRET_KEY;
-  const priceId = process.env.STRIPE_PRICE_ID;
+  // Validate the claim context against our source-of-truth data.
+  const state = getState(sp.get("state") ?? "");
+  const asset = getAsset(sp.get("asset") ?? "");
+  const ownerRaw = sp.get("owner") ?? "self";
+  const owner = ["self", "business", "heir"].includes(ownerRaw) ? ownerRaw : "self";
+  const value = String(Math.max(0, Number(sp.get("value")) || 0));
 
-  if (!secret || !priceId) {
-    return NextResponse.json(
-      {
-        ok: true,
-        status: "waitlist",
-        message:
-          "ClaimWise HQ Pro is launching shortly. The free 50-state search and claim wizard are available now — paid claim tracking is coming soon.",
-      },
-      { status: 200 },
-    );
+  if (!product || !state || !asset) {
+    return NextResponse.redirect(new URL("/premium", req.nextUrl.origin), 303);
   }
 
-  // Billing is configured — create a Checkout Session via the Stripe REST API
-  // (no SDK dependency needed for a single call).
+  const back = `/premium?product=${product.id}&state=${state.slug}&asset=${asset.slug}&owner=${owner}${value !== "0" ? `&value=${value}` : ""}`;
+
+  // Billing not live for this product → send the user to the honest premium page.
+  if (!isProductPurchasable(product)) {
+    return NextResponse.redirect(new URL(`${back}&status=soon`, req.nextUrl.origin), 303);
+  }
+
   try {
-    const origin = process.env.SITE_URL || "https://claimwisehq.vercel.app";
-    const body = new URLSearchParams({
-      mode: "subscription",
-      "line_items[0][price]": priceId,
-      "line_items[0][quantity]": "1",
-      success_url: `${origin}/success?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${origin}/#pricing`,
+    const origin = process.env.SITE_URL || req.nextUrl.origin || SITE.url;
+    const url = await createCheckoutSession({
+      priceId: process.env[product.priceEnv]!,
+      successUrl: `${origin}/success?session_id={CHECKOUT_SESSION_ID}`,
+      cancelUrl: `${origin}${back}`,
+      metadata: { product: product.id, state: state.slug, asset: asset.slug, owner, value },
     });
-    const res = await fetch("https://api.stripe.com/v1/checkout/sessions", {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${secret}`,
-        "Content-Type": "application/x-www-form-urlencoded",
-      },
-      body,
-    });
-    if (!res.ok) throw new Error(`Stripe responded ${res.status}`);
-    const session = (await res.json()) as { url?: string };
-    if (!session.url) throw new Error("No checkout URL returned");
-    return NextResponse.redirect(session.url, 303);
+    return NextResponse.redirect(url, 303);
   } catch {
-    return NextResponse.json(
-      { ok: false, status: "unavailable", message: "Checkout is temporarily unavailable. Please try again shortly." },
-      { status: 503 },
-    );
+    return NextResponse.redirect(new URL(`${back}&status=error`, req.nextUrl.origin), 303);
   }
 }

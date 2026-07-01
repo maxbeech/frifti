@@ -28,7 +28,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <header className="border-b border-slate-200 bg-white">
           <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-4">
             <Link href="/" className="flex items-center gap-2 font-semibold">
-              <span className="grid h-8 w-8 place-items-center rounded-lg bg-emerald-600 text-sm font-bold text-white">CW</span>
+              <span className="grid h-8 w-8 place-items-center rounded-lg bg-emerald-600 text-sm font-bold text-white">F</span>
               <span>{SITE.name}</span>
             </Link>
             <nav className="flex items-center gap-5 text-sm text-slate-600">
@@ -53,7 +53,9 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
             <div className="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-xs text-slate-500">
               <Link href="/" className="hover:text-slate-800">Home</Link>
               <Link href="/blog" className="hover:text-slate-800">Guides</Link>
+              <Link href="/premium" className="hover:text-slate-800">Claim Kit</Link>
               <Link href="/missingmoney-alternative" className="hover:text-slate-800">vs MissingMoney</Link>
+              <Link href="/disclosure" className="hover:text-slate-800">Affiliate disclosure</Link>
               <Link href="/privacy" className="hover:text-slate-800">Privacy</Link>
               <Link href="/terms" className="hover:text-slate-800">Terms</Link>
             </div>

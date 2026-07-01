@@ -4,6 +4,8 @@ import { useMemo, useState } from "react";
 import { STATES } from "@/lib/states";
 import { ASSET_TYPES } from "@/lib/assets";
 import { buildClaimPlan, type OwnerStatus } from "@/lib/claims";
+import { ClaimKitCta } from "@/components/ClaimKitCta";
+import { PartnerOffers } from "@/components/PartnerOffers";
 
 const OWNER_LABELS: Record<OwnerStatus, string> = {
   self: "Myself",
@@ -136,6 +138,9 @@ export function ClaimFinder({ initialState }: { initialState?: string }) {
               </li>
             ))}
           </ol>
+
+          <ClaimKitCta plan={plan} value={value ? Number(value) : 0} ownerStatus={owner} />
+          <PartnerOffers plan={plan} value={value ? Number(value) : 0} ownerStatus={owner} />
         </div>
       )}
     </div>
