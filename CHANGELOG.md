@@ -2,6 +2,23 @@
 
 All notable changes to Frifti are documented here.
 
+## 2026-07-21: New guide — lost pensions, plus content-schema migration shipped
+
+- **New Academy post**: "How to Find a Lost Pension: The Free PBGC Search Guide"
+  (`/blog/how-to-find-a-lost-pension`) — free search steps across PBGC's Missing
+  Participants database, DOL Form 5500 filings, the National Registry of Unclaimed
+  Retirement Benefits, and state unclaimed-property portals, the next Tier-2 topic from
+  `docs/seo_geo_content_plan.md` not yet covered by an existing post.
+- **Shipped a previously uncommitted migration**: blog content moved from a single
+  `lib/posts.ts` file to a typed `lib/posts/data/` directory (one file per post, shared
+  `types.ts`/`schema.ts`), with matching `app/blog` page updates. Merged against an
+  independently-diverged `origin/master` (an older commit had added 12 posts to the
+  now-superseded `lib/posts.ts`); resolved in favour of the new architecture, which already
+  covers 5 of those 12 topics with deeper content under different slugs. Four legacy topics
+  have no equivalent yet and are flagged in the Growth Profile table as the next content
+  gap: unclaimed wages recovery, safe-deposit-box abandoned property, business compliance,
+  and checking an existing claim's status.
+
 ## 2026-07-01: Premium visual redesign, de-AI-ified copy, and bug fixes
 
 A full pass on "this looks and reads like a generic AI template" across the whole site,
