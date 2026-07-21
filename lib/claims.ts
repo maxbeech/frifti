@@ -97,7 +97,7 @@ export function buildClaimPlan(input: ClaimInput): ClaimPlan {
 function buildSteps(state: StateInfo, asset: AssetType, ownerStatus: OwnerStatus): string[] {
   const steps = [
     `Search the official ${state.agency} portal for your name (and former names, maiden names and previous addresses).`,
-    `Open every matching ${asset.name.toLowerCase()} record and start a claim — there is never a fee to claim from the state.`,
+    `Open every matching ${asset.name.toLowerCase()} record and start a claim. There is never a fee to claim from the state.`,
     "Confirm your identity by uploading the documents in the checklist below.",
   ];
   if (ownerStatus === "heir") {
@@ -105,7 +105,7 @@ function buildSteps(state: StateInfo, asset: AssetType, ownerStatus: OwnerStatus
   }
   steps.push(
     "Submit the claim online (or print and mail it if the property is tangible or over the online limit).",
-    `Track the claim — ${state.name} typically acknowledges receipt by email and pays approved claims by check or direct deposit.`,
+    `Track the claim: ${state.name} typically acknowledges receipt by email and pays approved claims by check or direct deposit.`,
   );
   return steps;
 }

@@ -11,6 +11,10 @@
     "deploy": "vercel build --prod && vercel deploy --prebuilt --prod"
   },
   "dependencies": {
+    "@vercel/analytics": "^2.0.1",
+    "@vercel/speed-insights": "^2.0.0",
+    "geist": "^1.7.2",
+    "motion": "^12.42.2",
     "next": "16.2.9",
     "react": "19.2.4",
     "react-dom": "19.2.4"

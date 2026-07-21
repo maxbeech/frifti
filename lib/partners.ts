@@ -69,7 +69,7 @@ export const PARTNERS: Partner[] = [
     name: "NotaryLive",
     category: "Online notarisation",
     pitch:
-      "Higher-value and estate claims usually need a notarised claim form. NotaryLive lets you notarise documents online by video — no need to find a notary in person.",
+      "Higher-value and estate claims usually need a notarised claim form. NotaryLive lets you notarise documents online by video, no need to find a notary in person.",
     cta: "Notarise your claim form online",
     baseUrl: "https://notarylive.com/",
     affiliateParam: "a_aid",
@@ -125,7 +125,7 @@ export const PARTNERS: Partner[] = [
     name: "Capitalize",
     category: "Find old 401(k)s",
     pitch:
-      "Unclaimed money is often only part of the picture — old workplace 401(k)s get left behind too. Capitalize finds and rolls over forgotten 401(k)s, free for you.",
+      "Unclaimed money is often only part of the picture: old workplace 401(k)s get left behind too. Capitalize finds and rolls over forgotten 401(k)s, free for you.",
     cta: "Find a lost 401(k) for free",
     baseUrl: "https://www.hicapitalize.com/",
     affiliateParam: "ref",

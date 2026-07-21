@@ -38,7 +38,7 @@ export const PRODUCTS: Product[] = [
   {
     id: "claim-kit",
     name: "Claim Kit",
-    tagline: "Everything filled in and ready to file — for your specific state and property type.",
+    tagline: "Everything filled in and ready to file, for your specific state and property type.",
     priceUsd: 14.99,
     priceLabel: "$14.99",
     priceEnv: "STRIPE_PRICE_CLAIM_KIT",
@@ -48,7 +48,7 @@ export const PRODUCTS: Product[] = [
       "A personalised document checklist with what each item proves and where to get it",
       "A dated follow-up schedule so a stalled claim never slips through the cracks",
       "A step-by-step submission walkthrough for your exact state and property type",
-      "The most common rejection reasons — and how to avoid each one",
+      "The most common rejection reasons, and how to avoid each one",
       "A printable, save-anywhere PDF-ready format (no account needed)",
     ],
     // Default product. Best fit for non-estate claims, especially where there is real

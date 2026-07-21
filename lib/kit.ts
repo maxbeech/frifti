@@ -64,7 +64,7 @@ function coverLetter(plan: ClaimPlan, ownerStatus: OwnerStatus): string {
     `${state.agency}`,
     "Unclaimed Property Division",
     "",
-    `Re: Claim for unclaimed ${asset.name.toLowerCase()} — Claim/Property ID: [PROPERTY OR CLAIM ID]`,
+    `Re: Claim for unclaimed ${asset.name.toLowerCase()}, Claim/Property ID: [PROPERTY OR CLAIM ID]`,
     "",
     "To the Unclaimed Property team,",
     "",
@@ -99,16 +99,16 @@ function followUps(plan: ClaimPlan): KitFollowUp[] {
 
 function rejectionTips(plan: ClaimPlan, ownerStatus: OwnerStatus): KitTip[] {
   const tips: KitTip[] = [
-    { problem: "Name doesn't match the record", fix: "Claim under the exact name the property was reported in — include maiden and former names if you've changed it." },
+    { problem: "Name doesn't match the record", fix: "Claim under the exact name the property was reported in, including maiden and former names if you've changed it." },
     { problem: "Address can't be verified", fix: "Attach proof of a current address and, if you can, an old address that matches the reported record." },
-    { problem: "Blurry or partial document scans", fix: "Upload full-page, in-focus colour scans — cropped or dark photos are the most common reason claims stall." },
+    { problem: "Blurry or partial document scans", fix: "Upload full-page, in-focus colour scans. Cropped or dark photos are the most common reason claims stall." },
   ];
   if (plan.notarizationLikely)
-    tips.push({ problem: "Missing notarisation", fix: "Higher-value and estate claims usually need a notarised claim form — get it notarised before you file, not after a rejection." });
+    tips.push({ problem: "Missing notarisation", fix: "Higher-value and estate claims usually need a notarised claim form. Get it notarised before you file, not after a rejection." });
   if (ownerStatus === "heir")
-    tips.push({ problem: "Estate authority not proven", fix: "Include the death certificate plus letters testamentary or an heirship affidavit — states will not release estate funds without them." });
+    tips.push({ problem: "Estate authority not proven", fix: "Include the death certificate plus letters testamentary or an heirship affidavit. States will not release estate funds without them." });
   if (plan.asset.slug === "securities")
-    tips.push({ problem: "Shares need re-registration", fix: "Securities can take longer because they may be liquidated or re-registered — send any brokerage statement or certificate numbers up front." });
+    tips.push({ problem: "Shares need re-registration", fix: "Securities can take longer because they may be liquidated or re-registered. Send any brokerage statement or certificate numbers up front." });
   return tips;
 }
 
@@ -116,7 +116,7 @@ function estateSections(plan: ClaimPlan): KitSection[] {
   return [
     {
       h: "Search every state the deceased touched",
-      p: "Property is reported to the owner's last known address on file with the holder — not where they died. Search each state they lived, worked, banked or owned property in.",
+      p: "Property is reported to the owner's last known address on file with the holder, not where they died. Search each state they lived, worked, banked or owned property in.",
       ul: [
         "List every state connected to the deceased and search each official portal by full name, maiden name and middle-name variants.",
         `Start with ${plan.state.name}, then repeat the same search in every other connected state.`,
@@ -124,12 +124,12 @@ function estateSections(plan: ClaimPlan): KitSection[] {
       ],
     },
     {
-      h: "Affidavit of heirship — what states expect",
+      h: "Affidavit of heirship: what states expect",
       p: "When an estate wasn't formally probated, most states accept an affidavit of heirship. It typically must state:",
       ul: [
         "The deceased's full name, date of death and last address.",
         "That the estate was not (or no longer is) in probate, where that applies.",
-        "Each heir's name, relationship and share, signed before a notary — and sometimes by a disinterested witness.",
+        "Each heir's name, relationship and share, signed before a notary, and sometimes by a disinterested witness.",
       ],
     },
     {
@@ -145,18 +145,18 @@ export function buildClaimKit(input: KitInput): ClaimKit {
   const isEstate = input.product === "estate-report";
 
   const title = isEstate
-    ? `Estate Claim Report — ${plan.state.name} ${plan.asset.name}`
-    : `Claim Kit — ${plan.state.name} ${plan.asset.name}`;
+    ? `Estate Claim Report: ${plan.state.name} ${plan.asset.name}`
+    : `Claim Kit: ${plan.state.name} ${plan.asset.name}`;
 
   const intro = isEstate
-    ? `A complete, executor-ready pack for recovering ${plan.asset.name.toLowerCase()} that ${plan.state.name} is holding for a relative who has died. Remember: claiming from the state is free — this report exists to make a complex estate claim faster and harder to get wrong.`
-    : `Everything you need to file a clean ${plan.state.name} claim for ${plan.asset.name.toLowerCase()} the first time. Claiming from the state is always free — this kit just does the organising for you.`;
+    ? `A complete, executor-ready pack for recovering ${plan.asset.name.toLowerCase()} that ${plan.state.name} is holding for a relative who has died. Remember, claiming from the state is free: this report exists to make a complex estate claim faster and harder to get wrong.`
+    : `Everything you need to file a clean ${plan.state.name} claim for ${plan.asset.name.toLowerCase()} the first time. Claiming from the state is always free: this kit just does the organising for you.`;
 
   const checklist: KitChecklistItem[] = plan.documents.map((item) => ({ item, why: whyForDocument(item) }));
 
   const submissionSteps = [
     ...plan.steps,
-    "Keep a dated copy of the full submission and every document — your proof if anything is queried.",
+    "Keep a dated copy of the full submission and every document, your proof if anything is queried.",
     "File under the exact name and address the property was reported in wherever you know it.",
   ];
 

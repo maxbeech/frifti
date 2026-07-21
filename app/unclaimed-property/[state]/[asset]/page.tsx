@@ -3,6 +3,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ClaimFinder } from "@/components/ClaimFinder";
 import { JsonLd } from "@/components/JsonLd";
+import { Button } from "@/components/ui/Button";
+import { Accordion } from "@/components/ui/Accordion";
 import { SITE } from "@/lib/site";
 import { STATES, getState } from "@/lib/states";
 import { ASSET_TYPES, getAsset } from "@/lib/assets";
@@ -23,7 +25,7 @@ export async function generateMetadata({ params }: { params: Promise<{ state: st
   const s = getState(state);
   const a = getAsset(asset);
   if (!s || !a) return {};
-  const title = `${s.name} ${a.name} — Unclaimed Money Search & Claim`;
+  const title = `${s.name} ${a.name}: Unclaimed Money Search & Claim`;
   const description = `Find unclaimed ${a.name.toLowerCase()} in ${s.name} via the official ${s.agency} portal, with a free document checklist and claim timeline.`;
   return {
     title,
@@ -59,64 +61,52 @@ export default async function AssetPage({ params }: { params: Promise<{ state: s
     <div className="space-y-12">
       <JsonLd data={[breadcrumb, faqJsonLd(faq)]} />
 
-      <nav className="text-xs text-slate-500">
-        <Link href="/" className="hover:text-slate-700">Home</Link> <span aria-hidden>/</span>{" "}
-        <Link href={`/unclaimed-property/${s.slug}`} className="hover:text-slate-700">{s.name}</Link>{" "}
+      <nav className="text-xs text-muted">
+        <Link href="/" className="hover:text-ink">Home</Link> <span aria-hidden>/</span>{" "}
+        <Link href={`/unclaimed-property/${s.slug}`} className="hover:text-ink">{s.name}</Link>{" "}
         <span aria-hidden>/</span> {a.name}
       </nav>
 
-      <header className="space-y-3">
-        <h1 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
+      <header className="max-w-2xl space-y-4">
+        <h1 className="font-display text-3xl tracking-tight text-ink sm:text-5xl">
           {s.name}: Unclaimed {a.name}
         </h1>
-        <p className="max-w-2xl text-lg text-slate-600">{a.blurb}</p>
-        <a
-          href={s.portal}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-block rounded-lg bg-emerald-600 px-5 py-2.5 text-sm font-semibold text-white hover:bg-emerald-700"
-        >
-          Search {s.name} {a.name.toLowerCase()} →
-        </a>
+        <p className="text-lg text-body">{a.blurb}</p>
+        <Button href={s.portal} icon="external">Search {s.name} {a.name.toLowerCase()}</Button>
       </header>
 
       <section className="grid gap-6 sm:grid-cols-2">
-        <div className="rounded-xl border border-slate-200 bg-white p-5">
-          <h2 className="text-sm font-semibold text-slate-800">Typical claim profile</h2>
-          <ul className="mt-2 space-y-1 text-sm text-slate-600">
-            <li><span className="font-medium text-slate-700">Complexity:</span> <span className="capitalize">{plan.complexity}</span></li>
-            <li><span className="font-medium text-slate-700">Timeline:</span> {plan.timelineWeeks.min}–{plan.timelineWeeks.max} weeks</li>
-            <li><span className="font-medium text-slate-700">Administered by:</span> {s.agency}</li>
+        <div className="rounded-xl border border-line bg-surface p-5">
+          <h2 className="text-sm font-semibold text-ink">Typical claim profile</h2>
+          <ul className="mt-2 space-y-1 text-sm text-body">
+            <li><span className="font-medium text-ink">Complexity:</span> <span className="capitalize">{plan.complexity}</span></li>
+            <li><span className="font-medium text-ink">Timeline:</span> {plan.timelineWeeks.min}–{plan.timelineWeeks.max} weeks</li>
+            <li><span className="font-medium text-ink">Administered by:</span> {s.agency}</li>
           </ul>
         </div>
-        <div className="rounded-xl border border-slate-200 bg-white p-5">
-          <h2 className="text-sm font-semibold text-slate-800">Examples in this category</h2>
-          <ul className="mt-2 list-disc space-y-1 pl-5 text-sm text-slate-600">
+        <div className="rounded-xl border border-line bg-surface p-5">
+          <h2 className="text-sm font-semibold text-ink">Examples in this category</h2>
+          <ul className="mt-2 list-disc space-y-1 pl-5 text-sm text-body">
             {a.examples.map((e) => <li key={e}>{e}</li>)}
           </ul>
         </div>
       </section>
 
       <section>
-        <h2 className="mb-4 text-2xl font-bold text-slate-900">Build your {s.name} {a.name.toLowerCase()} checklist</h2>
-        <ClaimFinder initialState={s.slug} />
+        <h2 className="mb-4 font-display text-2xl text-ink">Build your {s.name} {a.name.toLowerCase()} checklist</h2>
+        <ClaimFinder initialState={s.slug} initialAsset={a.slug} />
       </section>
 
-      <section className="space-y-3">
-        <h2 className="text-2xl font-bold text-slate-900">FAQ</h2>
-        {faq.map((f) => (
-          <div key={f.q} className="rounded-xl border border-slate-200 bg-white p-5">
-            <h3 className="font-semibold text-slate-800">{f.q}</h3>
-            <p className="mt-2 text-sm text-slate-600">{f.a}</p>
-          </div>
-        ))}
+      <section className="space-y-4">
+        <h2 className="font-display text-2xl text-ink">FAQ</h2>
+        <Accordion items={faq} />
       </section>
 
       <section className="space-y-2">
-        <h2 className="text-lg font-semibold text-slate-900">Other property types in {s.name}</h2>
+        <h2 className="text-lg font-semibold text-ink">Other property types in {s.name}</h2>
         <div className="flex flex-wrap gap-2">
           {ASSET_TYPES.filter((x) => x.slug !== a.slug).map((x) => (
-            <Link key={x.slug} href={`/unclaimed-property/${s.slug}/${x.slug}`} className="rounded-full border border-slate-200 bg-white px-3 py-1 text-sm text-slate-700 hover:border-emerald-300">
+            <Link key={x.slug} href={`/unclaimed-property/${s.slug}/${x.slug}`} className="rounded-full border border-line bg-surface px-3 py-1 text-sm text-body hover:border-ink hover:text-ink">
               {x.name}
             </Link>
           ))}

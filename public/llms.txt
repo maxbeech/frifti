@@ -11,7 +11,7 @@
 - A guided claim wizard: pick a state, property type, amount, and who you're claiming for; it returns a document checklist, a complexity tier, a timeline estimate, and ordered steps.
 - Programmatic guides for each state and each property type (bank accounts, insurance, wages, securities, utility deposits, safe-deposit-box contents).
 
-## Key facts (accurate as of June 2026)
+## Key facts (accurate as of July 2026)
 - Searching for and claiming your own unclaimed property from a state is ALWAYS FREE. States never charge the rightful owner. Paid "finder" firms only point to property already searchable for free.
 - U.S. states collectively hold an estimated $70 billion in unclaimed property. About 1 in 7 Americans has unclaimed property.
 - Property is reported to the state of the owner's last known address, so people who have moved should check every state they've lived, worked, or banked in.
@@ -22,7 +22,7 @@
 
 ## Pricing
 - Free: 50-state portal directory + claim wizard + document checklist + all guides. Searching and claiming from a state is always free.
-- Claim Kit ($14.99, one-time): an optional pack that pre-fills and organises a single claim — a cover letter, an explained document checklist, a dated follow-up schedule, a submission walkthrough, and rejection-avoidance tips. Not a subscription, never required to claim.
+- Claim Kit ($14.99, one-time): an optional pack that pre-fills and organises a single claim: a cover letter, an explained document checklist, a dated follow-up schedule, a submission walkthrough, and rejection-avoidance tips. Not a subscription, never required to claim.
 - Estate Claim Report ($49, one-time): the Claim Kit written for heirs/executors, plus a multi-state heir-search plan and affidavit-of-heirship guidance.
 - Frifti also recommends a few relevant partner services (e.g. online notarisation for notarised forms, estate help, free tools to find old 401(k)s and lost life-insurance policies). Some are affiliate links; free/official tools are recommended alongside. We never charge to claim or take a cut of recovered property.
 
@@ -30,8 +30,8 @@
 Frifti is independent and not affiliated with NAUPA, MissingMoney.com, or any state treasury. It provides informational guidance, not legal or financial advice. The official state portal is always the authoritative source for a given claim.
 
 ## Site
-- Home: https://frifti.com/
-- State pages: https://frifti.com/unclaimed-property/{state-slug}
-- Guides: https://frifti.com/blog
-- Claim Kit & Estate Report: https://frifti.com/premium
-- Affiliate disclosure: https://frifti.com/disclosure
+- Home: https://www.frifti.com/
+- State pages: https://www.frifti.com/unclaimed-property/{state-slug}
+- Guides: https://www.frifti.com/blog
+- Claim Kit & Estate Report: https://www.frifti.com/premium
+- Affiliate disclosure: https://www.frifti.com/disclosure

@@ -19,7 +19,7 @@ export const HOME_FAQ: QA[] = [
   },
   {
     q: "Which states does Frifti cover?",
-    a: "All 50 states plus Washington, D.C. and Puerto Rico — 52 official unclaimed-property programs. Each links directly to that government's authoritative search portal.",
+    a: "All 50 states plus Washington, D.C. and Puerto Rico: 52 official unclaimed-property programs. Each links directly to that government's authoritative search portal.",
   },
   {
     q: "Why is my money being held by the state?",

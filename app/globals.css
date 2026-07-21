@@ -1,21 +1,95 @@
 @import "tailwindcss";
 
+/*
+ * Frifti brand palette — single source of truth for color across the app.
+ * Only two brand hues: charcoal (ink/brand surfaces) and lime (the one accent).
+ * Every component should reference these tokens (bg-brand, text-ink, border-line, …)
+ * instead of raw Tailwind colors (slate/emerald/etc) so the palette stays centralised.
+ */
 :root {
-  --background: #ffffff;
-  --foreground: #0f172a;
+  --background: #f7f6f2;
+  --foreground: #2e2a39;
+
+  --color-brand: #2e2a39; /* charcoal — header, footer, dark panels */
+  --color-brand-soft: #3d3850; /* charcoal, one step lighter — hover on dark surfaces */
+  --color-lime: #d7ff88; /* the one accent — CTAs, highlights, badges */
+  --color-lime-strong: #c2f05f; /* hover/active state for lime surfaces */
+
+  --color-ink: #2e2a39; /* headings, primary text */
+  --color-body: #5b5567; /* paragraph text */
+  --color-muted: #746e7d; /* captions, timestamps, placeholders — 4.5:1+ on bg/surface (WCAG AA) */
+  --color-line: #e4e0eb; /* borders */
+  --color-line-strong: #cfc9da; /* form-control borders */
+  --color-surface: #ffffff; /* cards */
+  --color-bg: #f7f6f2; /* page background */
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --color-brand: var(--color-brand);
+  --color-brand-soft: var(--color-brand-soft);
+  --color-lime: var(--color-lime);
+  --color-lime-strong: var(--color-lime-strong);
+  --color-ink: var(--color-ink);
+  --color-body: var(--color-body);
+  --color-muted: var(--color-muted);
+  --color-line: var(--color-line);
+  --color-line-strong: var(--color-line-strong);
+  --color-surface: var(--color-surface);
+  --color-bg: var(--color-bg);
+  /* Geist (UI/body) is loaded via the `geist` package in app/layout.tsx, which sets
+     --font-geist-sans on <html>; Fraunces (headline serif) is loaded via next/font/google
+     in the same file and sets --font-fraunces. Falling back to the system stack keeps text
+     visible during the brief window before either font finishes loading. */
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-display: var(--font-fraunces), Georgia, "Times New Roman", serif;
 }
 
 /* Light-only by design — no prefers-color-scheme dark block (it caused an
    unreadable-hero contrast bug on prior factory builds). */
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: var(--color-bg);
+  color: var(--color-ink);
   font-family: var(--font-sans);
+}
+
+::selection {
+  background: var(--color-lime);
+  color: var(--color-ink);
+}
+
+/* Subtle paper-grain texture for dark (charcoal) surfaces — a hand-tuned SVG noise filter,
+   not a stock texture image, so it costs nothing to load and never blurs at any viewport. */
+.bg-grain {
+  position: relative;
+  isolation: isolate;
+}
+.bg-grain::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+/* Lift real content above the grain overlay, but never touch elements that already declare
+   their own position (e.g. decorative `absolute` blobs) — forcing those to `position:
+   relative` used to knock them out of absolute positioning and into normal flow, where a
+   384px-tall "decorative" div would silently push all real content down the page. */
+.bg-grain > *:not([class*="absolute"]):not([class*="fixed"]) {
+  position: relative;
+  z-index: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

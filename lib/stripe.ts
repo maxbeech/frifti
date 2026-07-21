@@ -3,7 +3,13 @@
 // session and by /success to verify one. Everything degrades gracefully: when the secret
 // key is absent these helpers report "not configured" rather than throwing into the UI.
 
-const STRIPE_API = "https://api.stripe.com/v1";
+// Overridable so a full checkout journey can be exercised against a local double that speaks
+// Stripe's exact request/response contract, without real credentials. Defaults to the real API.
+const STRIPE_API = process.env.STRIPE_API_BASE || "https://api.stripe.com/v1";
+// Fail fast rather than hang the request if Stripe's API is slow/unreachable — the caller's
+// existing graceful-degradation UI (honest "soon"/"error"/"couldn't verify" states) then kicks
+// in well within a serverless function's execution budget instead of after it.
+const STRIPE_TIMEOUT_MS = 10_000;
 
 export function stripeConfigured(): boolean {
   return Boolean(process.env.STRIPE_SECRET_KEY);
@@ -34,6 +40,7 @@ export async function createCheckoutSession(p: CreateSessionParams): Promise<str
     method: "POST",
     headers: { Authorization: `Bearer ${secret}`, "Content-Type": "application/x-www-form-urlencoded" },
     body,
+    signal: AbortSignal.timeout(STRIPE_TIMEOUT_MS),
   });
   if (!res.ok) throw new Error(`Stripe responded ${res.status}`);
   const session = (await res.json()) as { url?: string };
@@ -41,21 +48,34 @@ export async function createCheckoutSession(p: CreateSessionParams): Promise<str
   return session.url;
 }
 
-export type VerifiedSession = { paid: boolean; metadata: Record<string, string> };
+export type VerifiedSession = { paid: boolean; metadata: Record<string, string>; createdAt: number };
 
-/** Retrieve a session and report whether it was paid, plus its metadata. null if unverifiable. */
+/**
+ * Retrieve a session and report whether it was paid, plus its metadata. Resolves to null if
+ * unverifiable for ANY reason — non-2xx response, malformed JSON, timeout, DNS/network failure —
+ * so the /success page's honest "couldn't verify this payment" state is always what renders,
+ * never an uncaught exception bubbling into the generic error boundary.
+ */
 export async function retrieveCheckoutSession(id: string): Promise<VerifiedSession | null> {
   const secret = process.env.STRIPE_SECRET_KEY;
   if (!secret || !id) return null;
 
-  const res = await fetch(`${STRIPE_API}/checkout/sessions/${encodeURIComponent(id)}`, {
-    headers: { Authorization: `Bearer ${secret}` },
-    cache: "no-store",
-  });
-  if (!res.ok) return null;
-  const s = (await res.json()) as { payment_status?: string; metadata?: Record<string, string> };
-  return {
-    paid: s.payment_status === "paid" || s.payment_status === "no_payment_required",
-    metadata: s.metadata ?? {},
-  };
+  try {
+    const res = await fetch(`${STRIPE_API}/checkout/sessions/${encodeURIComponent(id)}`, {
+      headers: { Authorization: `Bearer ${secret}` },
+      cache: "no-store",
+      signal: AbortSignal.timeout(STRIPE_TIMEOUT_MS),
+    });
+    if (!res.ok) return null;
+    const s = (await res.json()) as { payment_status?: string; metadata?: Record<string, string>; created?: number };
+    return {
+      paid: s.payment_status === "paid" || s.payment_status === "no_payment_required",
+      metadata: s.metadata ?? {},
+      // Stripe's `created` is Unix seconds — anchor the follow-up schedule to purchase time,
+      // not page-view time, so dates stay fixed if the buyer reopens a saved/printed copy later.
+      createdAt: s.created ? s.created * 1000 : Date.now(),
+    };
+  } catch {
+    return null;
+  }
 }

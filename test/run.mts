@@ -4,3 +4,4 @@ import "./claims.test.mts";
 import "./products.test.mts";
 import "./partners.test.mts";
 import "./kit.test.mts";
+import "./posts.test.mts";
