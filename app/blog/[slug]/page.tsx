@@ -58,7 +58,16 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
   const url = `${SITE.url}/blog/${post.slug}`;
   const toc = buildToc(post.body);
   const related = post.related.map((s) => getPost(s)).filter((p): p is NonNullable<typeof p> => Boolean(p));
-  const jsonLd = [blogPostingLd(post, url), faqJsonLd(post.faq), howToLd(post, url), reviewLd(post, url)].filter(Boolean);
+  const breadcrumb = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: SITE.url },
+      { "@type": "ListItem", position: 2, name: "Guides", item: `${SITE.url}/blog` },
+      { "@type": "ListItem", position: 3, name: post.title, item: url },
+    ],
+  };
+  const jsonLd = [breadcrumb, blogPostingLd(post, url), faqJsonLd(post.faq), howToLd(post, url), reviewLd(post, url)].filter(Boolean);
 
   return (
     <article className="mx-auto max-w-2xl space-y-6">

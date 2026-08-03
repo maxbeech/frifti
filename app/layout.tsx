@@ -9,6 +9,7 @@ import "./globals.css";
 import { SITE } from "@/lib/site";
 import { MobileNav } from "@/components/MobileNav";
 import { NAV_LINKS } from "@/lib/nav";
+import { JsonLd } from "@/components/JsonLd";
 
 const fraunces = Fraunces({
   subsets: ["latin"],
@@ -35,10 +36,32 @@ export const metadata: Metadata = {
   alternates: { canonical: SITE.url },
 };
 
+// Organization + WebSite identity, rendered on every page so any URL a crawler or AI
+// assistant lands on can resolve "who publishes this / what is this site" without first
+// visiting the homepage. Keep in sync with lib/site.ts.
+const organizationLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: SITE.name,
+  url: SITE.url,
+  logo: `${SITE.url}/logo.png`,
+  description: SITE.description,
+};
+
+const websiteLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: SITE.name,
+  url: SITE.url,
+  description: SITE.description,
+  publisher: { "@type": "Organization", name: SITE.name },
+};
+
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={`${GeistSans.variable} ${fraunces.variable}`}>
       <body className="flex min-h-screen flex-col bg-bg text-ink antialiased">
+        <JsonLd data={[organizationLd, websiteLd]} />
         <header className="bg-grain bg-brand">
           <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-4">
             <Link href="/" className="flex items-center" aria-label={`${SITE.name} home`}>

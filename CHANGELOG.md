@@ -2,6 +2,27 @@
 
 All notable changes to Frifti are documented here.
 
+## 2026-08-03: GEO audit fixes — sitewide Organization/WebSite JSON-LD, blog BreadcrumbList, explicit AI-crawler robots policy
+
+A full GEO (generative-engine optimisation) surface audit found the basics already covered
+(`llms.txt`, `SoftwareApplication` + `FAQPage` on the homepage, `BreadcrumbList` + `HowTo`/
+`FAQPage` on state and asset pages, an accurate sitemap) but three gaps a generic SEO audit
+wouldn't catch:
+
+- **Added `Organization` + `WebSite` JSON-LD sitewide** (`app/layout.tsx`), so any page a
+  crawler or AI assistant lands on — not just the homepage — can resolve who publishes the
+  site without a separate lookup.
+- **Added `BreadcrumbList` JSON-LD to blog posts** (`app/blog/[slug]/page.tsx`), matching the
+  pattern already used on state and asset pages. Previously only `BlogPosting`/`FAQPage`/
+  `HowTo`/`Review` were present there.
+- **Made the AI-crawler robots policy explicit** (`app/robots.ts`): GPTBot, ChatGPT-User,
+  OAI-SearchBot, ClaudeBot, Claude-Web, anthropic-ai, PerplexityBot, Perplexity-User,
+  Google-Extended, and CCBot now get their own named `Allow: /` rule alongside the general
+  `*` rule, so the welcome is unambiguous instead of implicit.
+
+No new dependencies; `npm test`, `npm run lint`, and `npm run build` all pass with all 401
+routes still generating statically.
+
 ## 2026-07-21: New guide — lost pensions, plus content-schema migration shipped
 
 - **New Academy post**: "How to Find a Lost Pension: The Free PBGC Search Guide"
