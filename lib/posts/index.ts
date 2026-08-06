@@ -7,6 +7,7 @@ import { post as howToFindALostPension } from "./data/how-to-find-a-lost-pension
 import { post as howToFindOld401k } from "./data/how-to-find-old-401k";
 import { post as howToFindUnclaimedMoneyCompleteGuide } from "./data/how-to-find-unclaimed-money-complete-guide";
 import { post as howToFindUnclaimedMoneyInMultipleStates } from "./data/how-to-find-unclaimed-money-in-multiple-states";
+import { post as howToFindUnclaimedSavingsBonds } from "./data/how-to-find-unclaimed-savings-bonds";
 import { post as irsUnclaimedMoneyFederalRefund } from "./data/irs-unclaimed-money-federal-refund";
 import { post as isMissingmoneyComLegit } from "./data/is-missingmoney-com-legit";
 import { post as isUnclaimedPropertySearchFree } from "./data/is-unclaimed-property-search-free";
@@ -45,6 +46,7 @@ export const POSTS: Post[] = [
   doYouPayTaxesOnUnclaimedMoney,
   claimittexasGovExplained,
   howToFindALostPension,
+  howToFindUnclaimedSavingsBonds,
 ];
 
 export function getPost(slug: string): Post | undefined {
