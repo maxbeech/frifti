@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { JsonLd } from "@/components/JsonLd";
 import { Button } from "@/components/ui/Button";
 import { Accordion } from "@/components/ui/Accordion";
@@ -27,9 +28,21 @@ const rows = [
 ];
 
 export default function MissingMoneyAlternative() {
+  const breadcrumb = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: SITE.url },
+      { "@type": "ListItem", position: 2, name: "MissingMoney.com Alternative", item: `${SITE.url}/missingmoney-alternative` },
+    ],
+  };
+
   return (
     <div className="space-y-10">
-      <JsonLd data={faqJsonLd(faq)} />
+      <JsonLd data={[breadcrumb, faqJsonLd(faq)]} />
+      <nav className="text-xs text-muted">
+        <Link href="/" className="hover:text-ink">Home</Link> <span aria-hidden>/</span> MissingMoney.com Alternative
+      </nav>
       <header className="max-w-2xl space-y-4">
         <h1 className="font-display text-3xl tracking-tight text-ink sm:text-5xl">A free MissingMoney.com alternative</h1>
         <p className="text-lg text-body">
