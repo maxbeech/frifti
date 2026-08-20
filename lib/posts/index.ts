@@ -12,7 +12,6 @@ import { post as howToFindUnclaimedSavingsBonds } from "./data/how-to-find-uncla
 import { post as irsUnclaimedMoneyFederalRefund } from "./data/irs-unclaimed-money-federal-refund";
 import { post as isMissingmoneyComLegit } from "./data/is-missingmoney-com-legit";
 import { post as isUnclaimedPropertySearchFree } from "./data/is-unclaimed-property-search-free";
-import { post as missingmoneyComVsStatePortal } from "./data/missingmoney-com-vs-state-portal";
 import { post as trustAndWillEstatePlanningReview } from "./data/trust-and-will-estate-planning-review";
 import { post as unclaimedInheritanceFromDeceasedRelative } from "./data/unclaimed-inheritance-from-deceased-relative";
 import { post as unclaimedLifeInsurancePolicyFinder } from "./data/unclaimed-life-insurance-policy-finder";
@@ -40,7 +39,6 @@ export const POSTS: Post[] = [
   unclaimedSurplusFundsCaseStudy,
   unclaimedMoneyByStateDataStudy,
   isMissingmoneyComLegit,
-  missingmoneyComVsStatePortal,
   unclaimedMoneyScamsRedFlags,
   irsUnclaimedMoneyFederalRefund,
   whatIsNaupaUnclaimedProperty,
