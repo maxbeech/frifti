@@ -3,6 +3,7 @@ import { post as capitalize401kFinderReview } from "./data/capitalize-401k-finde
 import { post as claimittexasGovExplained } from "./data/claimittexas-gov-explained";
 import { post as doYouPayTaxesOnUnclaimedMoney } from "./data/do-you-pay-taxes-on-unclaimed-money";
 import { post as findMassMoneyFindmassmoneyGovExplained } from "./data/find-mass-money-findmassmoney-gov-explained";
+import { post as governmentUnclaimedMoneyFullList } from "./data/government-unclaimed-money-full-list";
 import { post as howLongDoesUnclaimedPropertyTake } from "./data/how-long-does-unclaimed-property-take";
 import { post as howToFindALostPension } from "./data/how-to-find-a-lost-pension";
 import { post as howToFindOld401k } from "./data/how-to-find-old-401k";
@@ -47,6 +48,7 @@ export const POSTS: Post[] = [
   howToFindALostPension,
   howToFindUnclaimedSavingsBonds,
   findMassMoneyFindmassmoneyGovExplained,
+  governmentUnclaimedMoneyFullList,
 ];
 
 export function getPost(slug: string): Post | undefined {
