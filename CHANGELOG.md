@@ -2,6 +2,10 @@
 
 All notable changes to Frifti are documented here.
 
+## 2026-08-26: Production observability
+
+- Added Sentry browser, Node.js, and edge monitoring, request-error capture, source-map uploads, and the in-product feedback widget. Runtime reporting is disabled explicitly when no DSN is configured.
+
 ## 2026-08-03: GEO audit fixes — sitewide Organization/WebSite JSON-LD, blog BreadcrumbList, explicit AI-crawler robots policy
 
 A full GEO (generative-engine optimisation) surface audit found the basics already covered

@@ -11,6 +11,7 @@ complexity, timeline) for your specific state, property type, and situation.
 - Static / ISR pages (1-week revalidation), deployed on Vercel
 - Stripe Checkout for **one-time** products (env-gated; degrades to an honest "launching shortly" state when `STRIPE_*` is absent)
 - No database: the paid kit is delivered by verifying the Stripe session and regenerating the kit from session metadata
+- Sentry errors, performance sampling, release source maps, and in-product feedback (all disabled when the DSN is absent)
 
 ## Brand
 Two colors, defined once as design tokens in `app/globals.css` and used everywhere else via

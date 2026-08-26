@@ -11,6 +11,7 @@
     "deploy": "vercel build --prod && vercel deploy --prebuilt --prod"
   },
   "dependencies": {
+    "@sentry/nextjs": "^10.71.0",
     "@vercel/analytics": "^2.0.1",
     "@vercel/speed-insights": "^2.0.0",
     "geist": "^1.7.2",
