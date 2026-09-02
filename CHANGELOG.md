@@ -2,6 +2,13 @@
 
 All notable changes to Frifti are documented here.
 
+## 2026-09-03: Fix Safari JSON-LD crash on blog pages
+
+- JSON-LD payloads containing multiple schema entities now render as an object-rooted
+  `@graph` rather than a top-level array. This prevents Safari from throwing
+  `r["@context"].toLowerCase` on `/blog/claimittexas-gov-explained` and other pages with
+  multi-entity structured data. Added a regression test for the serializer.
+
 ## 2026-08-26: Production observability
 
 - Added Sentry browser, Node.js, and edge monitoring, request-error capture, source-map uploads, and the in-product feedback widget. Runtime reporting is disabled explicitly when no DSN is configured.

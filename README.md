@@ -53,6 +53,7 @@ Three routes, all built around the promise that claiming from a state is **alway
   allows the major AI crawlers (GPTBot, ClaudeBot, PerplexityBot, Google-Extended, CCBot, …)
   alongside the general `*` rule. `Organization`/`WebSite` JSON-LD renders on every page
   (`app/layout.tsx`); `BreadcrumbList` renders on every state, asset, and blog post page.
+  Multi-entity JSON-LD uses an object-rooted `@graph` (`lib/jsonld.ts`) for Safari compatibility.
 
 ## Data & logic (single sources of truth)
 - `lib/site.ts` — brand name, domain, canonical URL, and social handle
