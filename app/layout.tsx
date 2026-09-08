@@ -10,6 +10,7 @@ import { SITE } from "@/lib/site";
 import { MobileNav } from "@/components/MobileNav";
 import { NAV_LINKS } from "@/lib/nav";
 import { JsonLd } from "@/components/JsonLd";
+import { OpenHelmAnalytics } from "../lib/openhelm-analytics";
 
 const fraunces = Fraunces({
   subsets: ["latin"],
@@ -119,6 +120,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
 
         <Analytics />
         <SpeedInsights />
+        <OpenHelmAnalytics />
       </body>
     </html>
   );
