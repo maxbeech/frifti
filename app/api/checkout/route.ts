@@ -1,4 +1,5 @@
 import { NextResponse, type NextRequest } from "next/server";
+import * as Sentry from "@sentry/nextjs";
 import { getProduct, isProductPurchasable } from "@/lib/products";
 import { createCheckoutSession } from "@/lib/stripe";
 import { getState } from "@/lib/states";
@@ -51,7 +52,8 @@ async function handle(req: NextRequest) {
       metadata: { product: product.id, state: state.slug, asset: asset.slug, owner, value },
     });
     return NextResponse.redirect(url, 303);
-  } catch {
+  } catch (error) {
+    Sentry.captureException(error, { extra: { product: product.id, state: state.slug, asset: asset.slug } });
     return NextResponse.redirect(new URL(`${back}&status=error`, req.nextUrl.origin), 303);
   }
 }

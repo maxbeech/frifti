@@ -49,7 +49,7 @@ export function Button({ href, variant = "primary", size = "md", icon = "arrow",
 
   if (href.startsWith("http")) {
     return (
-      <a href={href} target="_blank" rel="noopener noreferrer" className={classes} {...rest}>
+      <a href={href} target="_blank" rel="noopener noreferrer" onClick={onClick} className={classes} {...rest}>
         {content}
       </a>
     );
@@ -60,14 +60,14 @@ export function Button({ href, variant = "primary", size = "md", icon = "arrow",
     // plain anchor forces a full browser navigation instead of Next's client-side router,
     // which would otherwise try to resolve /api/* as a page transition.
     return (
-      <a href={href} className={classes} {...rest}>
+      <a href={href} onClick={onClick} className={classes} {...rest}>
         {content}
       </a>
     );
   }
 
   return (
-    <Link href={href} className={classes} {...rest}>
+    <Link href={href} onClick={onClick} className={classes} {...rest}>
       {content}
     </Link>
   );

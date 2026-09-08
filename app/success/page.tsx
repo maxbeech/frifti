@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
+import * as Sentry from "@sentry/nextjs";
 import { PrintButton } from "@/components/PrintButton";
+import { PurchaseTracked } from "@/components/PurchaseTracked";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { retrieveCheckoutSession, stripeConfigured } from "@/lib/stripe";
@@ -41,6 +43,12 @@ export default async function Success({ searchParams }: { searchParams: Promise<
 
   // Couldn't verify (billing not configured, or Stripe lookup failed) → explicit failure.
   if (!session || !session.paid) {
+    // A buyer reaching this branch has (most likely) just paid and is stuck on an unverified
+    // state — a handled failure that would otherwise leave them stalled with no trace at all.
+    Sentry.captureMessage("checkout_success_unverified", {
+      level: "warning",
+      extra: { sessionId, hasSession: Boolean(session), stripeConfigured: stripeConfigured() },
+    });
     return (
       <Shell>
         <h1 className="font-display text-2xl text-ink">We couldn&apos;t verify this payment yet</h1>
@@ -84,6 +92,7 @@ export default async function Success({ searchParams }: { searchParams: Promise<
 
   return (
     <article className="mx-auto max-w-2xl space-y-8 py-6">
+      <PurchaseTracked transactionId={sessionId} productId={product.id} productName={product.name} priceUsd={product.priceUsd} />
       <header className="flex flex-wrap items-start justify-between gap-3 border-b border-line pb-5">
         <div>
           <Badge className="print:hidden">Payment confirmed · {product.name}</Badge>

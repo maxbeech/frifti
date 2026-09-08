@@ -6,3 +6,4 @@ import "./partners.test.mts";
 import "./kit.test.mts";
 import "./posts.test.mts";
 import "./jsonld.test.mts";
+import "./analytics.test.mts";

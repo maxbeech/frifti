@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { STATES } from "@/lib/states";
 import { ASSET_TYPES } from "@/lib/assets";
@@ -9,6 +9,7 @@ import { ClaimKitCta } from "@/components/ClaimKitCta";
 import { PartnerOffers } from "@/components/PartnerOffers";
 import { Button } from "@/components/ui/Button";
 import { CheckIcon, ClockIcon, DocumentIcon, ShieldIcon } from "@/components/icons";
+import { track } from "@/lib/openhelm-analytics";
 
 const OWNER_LABELS: Record<OwnerStatus, string> = {
   self: "Myself",
@@ -36,12 +37,36 @@ export function ClaimFinder({ initialState, initialAsset }: { initialState?: str
     });
   }, [stateSlug, assetSlug, value, owner]);
 
+  // Fires once per distinct (state, asset) combination the wizard actually renders a plan
+  // for — the "first value delivered" moment of the free claim journey.
+  const lastPlanKey = useRef<string | null>(null);
+  useEffect(() => {
+    if (!plan) return;
+    const key = `${plan.state.slug}:${plan.asset.slug}`;
+    if (lastPlanKey.current === key) return;
+    lastPlanKey.current = key;
+    track("claim_plan_generated", {
+      state: plan.state.slug,
+      asset: plan.asset.slug,
+      owner_status: owner,
+      complexity: plan.complexity,
+    });
+  }, [plan, owner]);
+
   return (
     <div className="rounded-2xl border border-line bg-surface p-6 text-left shadow-xl shadow-black/10 sm:p-8">
       <div className="grid gap-5 sm:grid-cols-2">
         <label className="block text-sm">
           <span className="font-medium text-ink">Which state held the property?</span>
-          <select value={stateSlug} onChange={(e) => setStateSlug(e.target.value)} className={fieldClass}>
+          <select
+            value={stateSlug}
+            onChange={(e) => {
+              const next = e.target.value;
+              setStateSlug(next);
+              if (next) track("state_selected", { state: next });
+            }}
+            className={fieldClass}
+          >
             <option value="">Select a state…</option>
             {STATES.map((s) => (
               <option key={s.slug} value={s.slug}>{s.name}</option>
@@ -89,7 +114,12 @@ export function ClaimFinder({ initialState, initialAsset }: { initialState?: str
             className="mt-6 border-t border-line pt-6"
           >
             <div className="flex flex-wrap items-center gap-3">
-              <Button href={plan.portal} variant="primary" icon="external">
+              <Button
+                href={plan.portal}
+                variant="primary"
+                icon="external"
+                onClick={() => track("portal_click", { state: plan.state.slug, asset: plan.asset.slug })}
+              >
                 Search the official {plan.state.name} portal
               </Button>
               <span className="text-xs text-muted">{plan.state.agency} · always free to claim</span>

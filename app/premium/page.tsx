@@ -3,6 +3,7 @@ import Link from "next/link";
 import { JsonLd } from "@/components/JsonLd";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
+import { CheckoutButton } from "@/components/CheckoutButton";
 import { Accordion } from "@/components/ui/Accordion";
 import { CheckIcon } from "@/components/icons";
 import { SITE } from "@/lib/site";
@@ -159,9 +160,9 @@ export default async function PremiumPage({ searchParams }: { searchParams: Prom
                 ))}
               </ul>
               {canBuyNow ? (
-                <Button href={buyHref} variant="primary" icon={false} className="mt-5">
+                <CheckoutButton href={buyHref} productId={p.id} productName={p.name} priceUsd={p.priceUsd} className="mt-5">
                   Get the {p.name}, {p.priceLabel}
-                </Button>
+                </CheckoutButton>
               ) : !personalised ? (
                 // The kit is generated from a claim's state/asset/owner context, so there is
                 // nothing to check out until one exists: send people to build it first rather

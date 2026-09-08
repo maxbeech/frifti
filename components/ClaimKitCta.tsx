@@ -2,11 +2,13 @@
 // product for the situation (Estate Claim Report for heirs, otherwise the Claim Kit) from
 // the registry in lib/products.ts, and links through to /premium with the claim pre-filled.
 // Always reassures the user the free path still works — this is help, not a gate.
+"use client";
 
 import { recommendedProduct } from "@/lib/products";
 import type { ClaimPlan, OwnerStatus } from "@/lib/claims";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
+import { track } from "@/lib/openhelm-analytics";
 
 export function premiumHref(opts: { productId: string; stateSlug: string; assetSlug: string; ownerStatus: OwnerStatus; value: number }): string {
   const q = new URLSearchParams({
@@ -44,7 +46,18 @@ export function ClaimKitCta({
       <Badge>Optional · one-time · {product.priceLabel}</Badge>
       <h3 className="mt-2 font-display text-lg text-ink">Want it done for you? Get the {product.name}.</h3>
       <p className="mt-1 text-sm text-body">{product.tagline}</p>
-      <Button href={href} variant="primary" size="sm" className="mt-3">
+      <Button
+        href={href}
+        variant="primary"
+        size="sm"
+        className="mt-3"
+        onClick={() =>
+          track("select_item", {
+            item_list_name: "claim_kit_cta",
+            items: [{ item_id: product.id, item_name: product.name, price: product.priceUsd }],
+          })
+        }
+      >
         See what&apos;s inside the {product.name}
       </Button>
       <p className="mt-2 text-xs text-muted">

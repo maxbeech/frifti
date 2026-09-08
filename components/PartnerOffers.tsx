@@ -2,11 +2,13 @@
 // step in the user's claim, always frames them as optional, recommends free official tools
 // alongside, and discloses affiliate links clearly. Pure presentation — relevance and link
 // building live in lib/partners.ts (the single source of truth).
+"use client";
 
 import Link from "next/link";
 import { partnersForPlan, buildPartnerLink, hasAffiliatePartners } from "@/lib/partners";
 import type { ClaimPlan, OwnerStatus } from "@/lib/claims";
 import { ExternalIcon } from "@/components/icons";
+import { track } from "@/lib/openhelm-analytics";
 
 export function PartnerOffers({
   plan,
@@ -37,6 +39,7 @@ export function PartnerOffers({
               href={url}
               target="_blank"
               rel={isAffiliate ? "sponsored noopener noreferrer" : "noopener noreferrer"}
+              onClick={() => track("partner_offer_click", { partner: p.slug, category: p.category, is_affiliate: isAffiliate })}
               className="group flex flex-col rounded-xl border border-line bg-surface p-4 transition-colors hover:border-ink"
             >
               <span className="text-[11px] font-semibold uppercase tracking-wide text-ink">
