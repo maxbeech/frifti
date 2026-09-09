@@ -39,7 +39,7 @@ export default function Disclosure() {
           mark affiliate links clearly. A commission never changes the guidance we give: the official state portal is
           always the authoritative, free way to claim.
         </p>
-        <p>Questions? Email hello@frifti.com.</p>
+        <p>Questions? Email hello@mail.frifti.com.</p>
       </div>
     </div>
   );

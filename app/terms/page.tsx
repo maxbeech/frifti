@@ -17,7 +17,7 @@ export default function Terms() {
         <p>Claim requirements, dormancy periods, and timelines vary by state and property type and change over time. Always verify details against the official state portal, which is the authoritative source for every claim.</p>
         <p>You can always search for and claim your own unclaimed property directly from a state for free. {SITE.name} never charges a percentage of recovered property and is not a paid finder service.</p>
         <p>The service is provided &quot;as is&quot; without warranties. To the extent permitted by law, {SITE.name} is not liable for any loss arising from use of the site.</p>
-        <p>Questions? Email hello@frifti.com.</p>
+        <p>Questions? Email hello@mail.frifti.com.</p>
       </div>
     </div>
   );
