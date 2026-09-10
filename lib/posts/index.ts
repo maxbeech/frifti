@@ -18,6 +18,7 @@ import { post as unclaimedInheritanceFromDeceasedRelative } from "./data/unclaim
 import { post as unclaimedLifeInsurancePolicyFinder } from "./data/unclaimed-life-insurance-policy-finder";
 import { post as unclaimedMoneyByStateDataStudy } from "./data/unclaimed-money-by-state-data-study";
 import { post as unclaimedMoneyScamsRedFlags } from "./data/unclaimed-money-scams-red-flags";
+import { post as unclaimedSettlementMoney } from "./data/unclaimed-settlement-money";
 import { post as unclaimedSurplusFundsCaseStudy } from "./data/unclaimed-surplus-funds-case-study";
 import { post as whatDocumentsToClaimUnclaimedProperty } from "./data/what-documents-to-claim-unclaimed-property";
 import { post as whatIsNaupaUnclaimedProperty } from "./data/what-is-naupa-unclaimed-property";
@@ -49,6 +50,7 @@ export const POSTS: Post[] = [
   howToFindUnclaimedSavingsBonds,
   findMassMoneyFindmassmoneyGovExplained,
   governmentUnclaimedMoneyFullList,
+  unclaimedSettlementMoney,
 ];
 
 export function getPost(slug: string): Post | undefined {
