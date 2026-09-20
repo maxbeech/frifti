@@ -1,7 +1,6 @@
 import type { MetadataRoute } from "next";
 import { SITE } from "@/lib/site";
 import { STATES } from "@/lib/states";
-import { ASSET_TYPES } from "@/lib/assets";
 import { POSTS } from "@/lib/posts";
 
 // The state/asset directory content (lib/states.ts, lib/assets.ts) last changed on this date.
@@ -30,18 +29,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
-  const assetPages: MetadataRoute.Sitemap = [];
-  for (const s of STATES) {
-    for (const a of ASSET_TYPES) {
-      assetPages.push({
-        url: `${base}/unclaimed-property/${s.slug}/${a.slug}`,
-        lastModified: DIRECTORY_LAST_UPDATED,
-        changeFrequency: "weekly",
-        priority: 0.6,
-      });
-    }
-  }
-
   const postPages: MetadataRoute.Sitemap = POSTS.map((p) => ({
     url: `${base}/blog/${p.slug}`,
     lastModified: new Date(p.updated),
@@ -49,5 +36,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.5,
   }));
 
-  return [...staticPages, ...statePages, ...assetPages, ...postPages];
+  // State-and-asset pages remain available as contextual tools from their state hub and
+  // claim flow, but they deliberately stay out of the sitemap. Their six shared templates
+  // do not merit competing with the independently useful state hubs and editorial guides.
+  return [...staticPages, ...statePages, ...postPages];
 }

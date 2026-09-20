@@ -2,6 +2,17 @@
 
 All notable changes to Frifti are documented here.
 
+## 2026-09-20: Search Console crawl-budget remediation
+
+- Kept `https://www.frifti.com` as the single canonical sitemap origin. The existing Vercel
+  HTTP and apex-to-www permanent redirects are the matching transport-level signal.
+- Removed the 312 mechanically similar state-and-property-type checklist URLs from
+  `/sitemap.xml` and marked those contextual pages `noindex, follow`. They remain available
+  from each state hub and the claim flow, while Google can focus on the 52 official-portal
+  hubs and the 24 substantial, reviewed guides.
+- Added regression coverage for the www-only sitemap, its intentional URL set, and the
+  contextual-page indexing directive.
+
 ## 2026-09-03: Fix Safari JSON-LD crash on blog pages
 
 - JSON-LD payloads containing multiple schema entities now render as an object-rooted

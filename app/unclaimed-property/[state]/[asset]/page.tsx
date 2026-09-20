@@ -31,6 +31,10 @@ export async function generateMetadata({ params }: { params: Promise<{ state: st
     title,
     description,
     alternates: { canonical: `${SITE.url}/unclaimed-property/${s.slug}/${a.slug}` },
+    // These are useful, pre-filled claim-tool pages, but each one is composed from the
+    // same six property-type guides. Keep the long-tail UI reachable while directing
+    // search discovery to the stronger state hubs and editorial guides.
+    robots: { index: false, follow: true },
     openGraph: { title, description, url: `${SITE.url}/unclaimed-property/${s.slug}/${a.slug}` },
   };
 }

@@ -42,14 +42,14 @@ Three routes, all built around the promise that claiming from a state is **alway
 ## Routes
 - `/` — landing page, search wizard, asset & state directory, pricing, FAQ
 - `/unclaimed-property/[state]` — 52 official state portals + claim guide (programmatic SEO)
-- `/unclaimed-property/[state]/[asset]` — 312 state × property-type pages
+- `/unclaimed-property/[state]/[asset]` — 312 contextual state × property-type checklist pages. They are intentionally `noindex, follow` and excluded from the sitemap: their shared templates support people who arrive from a state hub or claim flow, rather than competing with the stronger state and editorial pages in Search.
 - `/premium` — Claim Kit & Estate Report sales page (personalised from claim params)
 - `/blog`, `/blog/[slug]` — 21 SEO/GEO-optimised Academy, News & Review posts (see `lib/posts/`)
 - `/missingmoney-alternative` — competitor comparison
 - `/disclosure` — affiliate & advertising disclosure
 - `/api/checkout` — one-time Stripe Checkout (graceful degradation)
 - `/success` — verifies payment, delivers the generated kit (noindex)
-- `/sitemap.xml`, `/robots.txt`, `/llms.txt` — SEO + GEO artifacts. `robots.txt` explicitly
+- `/sitemap.xml`, `/robots.txt`, `/llms.txt` — SEO + GEO artifacts. The sitemap contains only www canonical, indexable pages: the editorial guides, state hubs and genuinely standalone static pages. `robots.txt` explicitly
   allows the major AI crawlers (GPTBot, ClaudeBot, PerplexityBot, Google-Extended, CCBot, …)
   alongside the general `*` rule. `Organization`/`WebSite` JSON-LD renders on every page
   (`app/layout.tsx`); `BreadcrumbList` renders on every state, asset, and blog post page.
