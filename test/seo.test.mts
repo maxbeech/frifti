@@ -20,7 +20,7 @@ test("uses the www origin as the only sitemap origin", () => {
 
 test("includes only substantive state hubs and editorial guides", () => {
   const sitemapSource = readFileSync(new URL("../app/sitemap.ts", import.meta.url), "utf8");
-  assert.strictEqual(7 + STATES.length + POSTS.length, 83, "unexpected intended sitemap URL count");
+  assert.strictEqual(7 + STATES.length + POSTS.length, 98, "unexpected intended sitemap URL count");
   assert.match(sitemapSource, /const statePages(?:: MetadataRoute\.Sitemap)? = STATES\.map/, "state hubs missing from sitemap route");
   assert.match(sitemapSource, /const postPages(?:: MetadataRoute\.Sitemap)? = POSTS\.map/, "editorial guides missing from sitemap route");
   assert.doesNotMatch(sitemapSource, /assetPages/, "state-and-asset pages must not be in sitemap");

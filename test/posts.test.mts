@@ -29,6 +29,15 @@ test("expects at least 20 posts", () => {
   assert.ok(POSTS.length >= 20, `expected at least 20 posts, found ${POSTS.length}`);
 });
 
+test("includes the 15-post September 2026 publication batch", () => {
+  const batch = POSTS.filter((p) => p.published >= "2026-09-24" && p.published <= "2026-09-30");
+  assert.strictEqual(batch.length, 15, `expected 15 September posts, found ${batch.length}`);
+  for (const p of batch) {
+    assert.ok(wordCount(p.body) >= 1200, `${p.slug} body is under the 1,200-word publication brief minimum`);
+    assert.ok(p.title.length < 60, `${p.slug} title is ${p.title.length} chars (max 59)`);
+  }
+});
+
 test("slugs are unique and match published category enum", () => {
   const slugs = new Set(POSTS.map((p) => p.slug));
   assert.strictEqual(slugs.size, POSTS.length, "duplicate slug found");

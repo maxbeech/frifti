@@ -34,6 +34,18 @@ All notable changes to Frifti are documented here.
 - The apex-to-www redirect is now served by Helm7's edge instead of Vercel; the canonical
   origin is unchanged.
 
+## 2026-09-30: Fifteen publication-ready unclaimed-property guides
+
+- Added 15 source-led Academy, Review and News posts aligned to the Tier 1–3 terms in
+  `docs/seo_geo_content_plan.md`, including claim workflow, business and estate paths,
+  safe identity checks, bank accounts, state search reviews, and two current-trend pieces.
+- Each new post has a unique Pexels featured image obtained through the configured Pipedream
+  integration, SEO metadata, FAQ/HowTo or Review structured data, official-source links,
+  a visual decision table and clustered related-guide links. The existing blog index and
+  sitemap consume `POSTS`, so all 15 are included automatically.
+- Added regression coverage for the exact 15-post batch, its title limits and the requested
+  1,200-word minimum.
+
 ## 2026-09-20: Search Console crawl-budget remediation
 
 - Kept `https://www.frifti.com` as the single canonical sitemap origin. The existing Vercel

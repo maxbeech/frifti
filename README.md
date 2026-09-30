@@ -44,7 +44,7 @@ Three routes, all built around the promise that claiming from a state is **alway
 - `/unclaimed-property/[state]` — 52 official state portals + claim guide (programmatic SEO)
 - `/unclaimed-property/[state]/[asset]` — 312 contextual state × property-type checklist pages. They are intentionally `noindex, follow` and excluded from the sitemap: their shared templates support people who arrive from a state hub or claim flow, rather than competing with the stronger state and editorial pages in Search.
 - `/premium` — Claim Kit & Estate Report sales page (personalised from claim params)
-- `/blog`, `/blog/[slug]` — 21 SEO/GEO-optimised Academy, News & Review posts (see `lib/posts/`)
+- `/blog`, `/blog/[slug]` — 39 SEO/GEO-optimised Academy, News & Review posts (see `lib/posts/`)
 - `/missingmoney-alternative` — competitor comparison
 - `/disclosure` — affiliate & advertising disclosure
 - `/api/checkout` — one-time Stripe Checkout (graceful degradation)
