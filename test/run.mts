@@ -8,3 +8,4 @@ import "./posts.test.mts";
 import "./jsonld.test.mts";
 import "./analytics.test.mts";
 import "./seo.test.mts";
+import "./no-vercel.test.mts";

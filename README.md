@@ -8,7 +8,7 @@ complexity, timeline) for your specific state, property type, and situation.
 
 ## Stack
 - Next.js 16 (App Router) + TypeScript + Tailwind CSS v4
-- Static / ISR pages (1-week revalidation), deployed on Vercel
+- Static / ISR pages (1-week revalidation), self-hosted on Helm7 (`npm start` honours `$PORT`)
 - Stripe Checkout for **one-time** products (env-gated; degrades to an honest "launching shortly" state when `STRIPE_*` is absent)
 - No database: the paid kit is delivered by verifying the Stripe session and regenerating the kit from session metadata
 - Sentry errors, performance sampling, release source maps, and in-product feedback (all disabled when the DSN is absent)

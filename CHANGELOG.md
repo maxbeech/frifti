@@ -2,6 +2,18 @@
 
 All notable changes to Frifti are documented here.
 
+## 2026-09-30: Moved from Vercel to Helm7
+
+- Removed `@vercel/analytics` and `@vercel/speed-insights` (they only report when served
+  through Vercel's edge) and the `vercel build` deploy script. Traffic measurement stays with
+  the existing Google Analytics client.
+- Sentry's environment now comes from `NODE_ENV`; `VERCEL_ENV` is never set on Helm7, so the
+  old lookup would have labelled every production error "development".
+- `npm start` honours `$PORT`, which Helm7's health check relies on.
+- Added `test/no-vercel.test.mts` to keep Vercel packages, scripts and `VERCEL_*` checks out.
+- The apex-to-www redirect is now served by Helm7's edge instead of Vercel; the canonical
+  origin is unchanged.
+
 ## 2026-09-20: Search Console crawl-budget remediation
 
 - Kept `https://www.frifti.com` as the single canonical sitemap origin. The existing Vercel
