@@ -1,5 +1,6 @@
 import assert from "node:assert";
 import { isValidEventName } from "../lib/openhelm-analytics-mp.ts";
+import { EVENTS } from "../lib/analytics-events.ts";
 
 let passed = 0;
 function test(name: string, fn: () => void) {
@@ -11,18 +12,7 @@ function test(name: string, fn: () => void) {
 // Every event name instrumented across the product's user journeys must be a name GA4
 // actually accepts, per the same validator the Measurement Protocol sender uses — this pins
 // the whole set against silently-always-zero metrics.
-const JOURNEY_EVENT_NAMES = [
-  "page_view",
-  "state_selected",
-  "claim_plan_generated",
-  "portal_click",
-  "select_item",
-  "begin_checkout",
-  "purchase",
-  "partner_offer_click",
-  "error_boundary_shown",
-  "error_recovery_action",
-];
+const JOURNEY_EVENT_NAMES = ["page_view", ...Object.values(EVENTS)];
 
 test("every instrumented journey event name is a valid GA4 event name", () => {
   for (const name of JOURNEY_EVENT_NAMES) {

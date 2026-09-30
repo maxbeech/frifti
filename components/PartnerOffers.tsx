@@ -8,7 +8,7 @@ import Link from "next/link";
 import { partnersForPlan, buildPartnerLink, hasAffiliatePartners } from "@/lib/partners";
 import type { ClaimPlan, OwnerStatus } from "@/lib/claims";
 import { ExternalIcon } from "@/components/icons";
-import { track } from "@/lib/openhelm-analytics";
+import { sendEvent } from "@/lib/analytics-send";
 
 export function PartnerOffers({
   plan,
@@ -39,7 +39,7 @@ export function PartnerOffers({
               href={url}
               target="_blank"
               rel={isAffiliate ? "sponsored noopener noreferrer" : "noopener noreferrer"}
-              onClick={() => track("partner_offer_click", { partner: p.slug, category: p.category, is_affiliate: isAffiliate })}
+              onClick={() => sendEvent("partner_offer_click", { partner: p.slug, category: p.category, is_affiliate: isAffiliate })}
               className="group flex flex-col rounded-xl border border-line bg-surface p-4 transition-colors hover:border-ink"
             >
               <span className="text-[11px] font-semibold uppercase tracking-wide text-ink">

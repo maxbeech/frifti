@@ -50,7 +50,14 @@ export async function createCheckoutSession(p: CreateSessionParams): Promise<str
   return session.url;
 }
 
-export type VerifiedSession = { paid: boolean; metadata: Record<string, string>; createdAt: number };
+export type VerifiedSession = {
+  paid: boolean;
+  metadata: Record<string, string>;
+  createdAt: number;
+  /** Amount Stripe actually charged, in major units (dollars); null if the response omitted it. */
+  amountTotal: number | null;
+  currency: string | null;
+};
 
 /**
  * Retrieve a session and report whether it was paid, plus its metadata. Resolves to null if
@@ -77,13 +84,22 @@ export async function retrieveCheckoutSession(id: string): Promise<VerifiedSessi
       });
       return null;
     }
-    const s = (await res.json()) as { payment_status?: string; metadata?: Record<string, string>; created?: number };
+    const s = (await res.json()) as {
+      payment_status?: string;
+      metadata?: Record<string, string>;
+      created?: number;
+      amount_total?: number | null;
+      currency?: string | null;
+    };
     return {
       paid: s.payment_status === "paid" || s.payment_status === "no_payment_required",
       metadata: s.metadata ?? {},
       // Stripe's `created` is Unix seconds — anchor the follow-up schedule to purchase time,
       // not page-view time, so dates stay fixed if the buyer reopens a saved/printed copy later.
       createdAt: s.created ? s.created * 1000 : Date.now(),
+      // Stripe's amount_total is in minor units (cents).
+      amountTotal: typeof s.amount_total === "number" ? s.amount_total / 100 : null,
+      currency: s.currency ?? null,
     };
   } catch (error) {
     Sentry.captureException(error, { extra: { sessionId: id, stage: "retrieveCheckoutSession" } });

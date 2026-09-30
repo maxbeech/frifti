@@ -64,6 +64,9 @@ Three routes, all built around the promise that claiming from a state is **alway
 - `lib/partners.ts` — affiliate/resource partners, contextual matching, affiliate-link building
 - `lib/kit.ts` — generates the real paid kit (cover letter, follow-ups, tips) from a claim
 - `lib/stripe.ts` — dependency-free Stripe REST wrapper (create + verify Checkout Session)
+- `lib/analytics-events.ts` — every GA4 event name, its params, and the pure payload builders (`lib/analytics-send.ts`
+  is the typed `track()` wrapper; `lib/analytics-ref.ts` hashes the buyer reference server-side). Journeys: visit ->
+  `claim_plan_generated` -> `purchase`, with `checkout_failed` / `checkout_cancelled` / `purchase_confirmation_failed`
 - `lib/posts/` — blog content model (`types.ts`), JSON-LD builders (`schema.ts`), TOC helper
   (`toc.ts`), and one file per post under `data/`; `index.ts` aggregates them into `POSTS`
 - `test/*.test.mts` — unit tests pinning the engine, products, partners, and kit to expected values

@@ -8,7 +8,7 @@ import { recommendedProduct } from "@/lib/products";
 import type { ClaimPlan, OwnerStatus } from "@/lib/claims";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
-import { track } from "@/lib/openhelm-analytics";
+import { sendEvent } from "@/lib/analytics-send";
 
 export function premiumHref(opts: { productId: string; stateSlug: string; assetSlug: string; ownerStatus: OwnerStatus; value: number }): string {
   const q = new URLSearchParams({
@@ -52,7 +52,7 @@ export function ClaimKitCta({
         size="sm"
         className="mt-3"
         onClick={() =>
-          track("select_item", {
+          sendEvent("select_item", {
             item_list_name: "claim_kit_cta",
             items: [{ item_id: product.id, item_name: product.name, price: product.priceUsd }],
           })

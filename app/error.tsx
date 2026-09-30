@@ -3,7 +3,7 @@
 import { useEffect, useRef } from "react";
 import * as Sentry from "@sentry/nextjs";
 import { Button } from "@/components/ui/Button";
-import { track } from "@/lib/openhelm-analytics";
+import { sendEvent } from "@/lib/analytics-send";
 
 export default function Error({ error, reset }: { error: Error & { digest?: string }; reset: () => void }) {
   const reported = useRef(false);
@@ -12,7 +12,7 @@ export default function Error({ error, reset }: { error: Error & { digest?: stri
     if (reported.current) return;
     reported.current = true;
     Sentry.captureException(error);
-    track("error_boundary_shown", { digest: error.digest ?? "", message: error.message });
+    sendEvent("error_boundary_shown", { digest: error.digest ?? "" });
   }, [error]);
 
   return (
@@ -25,13 +25,13 @@ export default function Error({ error, reset }: { error: Error & { digest?: stri
           type="button"
           icon={false}
           onClick={() => {
-            track("error_recovery_action", { action: "retry" });
+            sendEvent("error_recovery_action", { action: "retry" });
             reset();
           }}
         >
           Try again
         </Button>
-        <Button href="/" variant="secondary" icon={false} onClick={() => track("error_recovery_action", { action: "home" })}>
+        <Button href="/" variant="secondary" icon={false} onClick={() => sendEvent("error_recovery_action", { action: "home" })}>
           Go to homepage
         </Button>
       </div>
