@@ -9,7 +9,7 @@ import { ClaimKitCta } from "@/components/ClaimKitCta";
 import { PartnerOffers } from "@/components/PartnerOffers";
 import { Button } from "@/components/ui/Button";
 import { CheckIcon, ClockIcon, DocumentIcon, ShieldIcon } from "@/components/icons";
-import { track } from "@/lib/openhelm-analytics";
+import { sendEvent } from "@/lib/analytics-send";
 
 const OWNER_LABELS: Record<OwnerStatus, string> = {
   self: "Myself",
@@ -45,7 +45,7 @@ export function ClaimFinder({ initialState, initialAsset }: { initialState?: str
     const key = `${plan.state.slug}:${plan.asset.slug}`;
     if (lastPlanKey.current === key) return;
     lastPlanKey.current = key;
-    track("claim_plan_generated", {
+    sendEvent("claim_plan_generated", {
       state: plan.state.slug,
       asset: plan.asset.slug,
       owner_status: owner,
@@ -63,7 +63,7 @@ export function ClaimFinder({ initialState, initialAsset }: { initialState?: str
             onChange={(e) => {
               const next = e.target.value;
               setStateSlug(next);
-              if (next) track("state_selected", { state: next });
+              if (next) sendEvent("state_selected", { state: next });
             }}
             className={fieldClass}
           >
@@ -118,7 +118,7 @@ export function ClaimFinder({ initialState, initialAsset }: { initialState?: str
                 href={plan.portal}
                 variant="primary"
                 icon="external"
-                onClick={() => track("portal_click", { state: plan.state.slug, asset: plan.asset.slug })}
+                onClick={() => sendEvent("portal_click", { state: plan.state.slug, asset: plan.asset.slug })}
               >
                 Search the official {plan.state.name} portal
               </Button>

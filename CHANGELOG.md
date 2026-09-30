@@ -2,6 +2,16 @@
 
 All notable changes to Frifti are documented here.
 
+## 2026-09-30: Instrument user journeys for OpenHelm
+
+- Added `checkout_failed`, `checkout_cancelled` and `purchase_confirmation_failed` so a stuck checkout is
+  distinguishable from an abandoned one. `/api/checkout` now returns cancelled buyers to `/premium?...&status=cancelled`.
+- `purchase` now reports the amount Stripe charged, is sent for any verified payment (including when the kit cannot
+  be rebuilt), is not re-sent on a reload, and identifies the buyer as `oh_plan=paid` with a one-way
+  `oh_user_ref` derived server-side from the Stripe session id. Frifti has no accounts, so free visitors stay unidentified.
+- Event names and params live in `lib/analytics-events.ts`; existing call sites use the typed `sendEvent`.
+  `error_boundary_shown` no longer sends the error message (Sentry already has it).
+- Refreshed `lib/openhelm-analytics*.ts(x)` from the shared service (adds `identify` and `userRefFor`).
 ## 2026-09-30: Moved from Vercel to Helm7
 
 - Removed `@vercel/analytics` and `@vercel/speed-insights` (they only report when served

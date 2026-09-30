@@ -1,12 +1,12 @@
 // Thin client wrapper around the shared Button, used only for the one-time-product buy CTA
 // on /premium. That page is a server component (personalises from search params server-side),
 // so the begin_checkout tracking call has to live in a small client island rather than the
-// page itself. Fires before the plain <a> navigates to /api/checkout — track() only pushes to
+// page itself. Fires before the plain <a> navigates to /api/checkout — sendEvent() only pushes to
 // dataLayer synchronously, so it never delays or blocks the navigation.
 "use client";
 
 import { Button } from "@/components/ui/Button";
-import { track } from "@/lib/openhelm-analytics";
+import { sendEvent } from "@/lib/analytics-send";
 
 export function CheckoutButton({
   href,
@@ -30,7 +30,7 @@ export function CheckoutButton({
       icon={false}
       className={className}
       onClick={() =>
-        track("begin_checkout", {
+        sendEvent("begin_checkout", {
           currency: "USD",
           value: priceUsd,
           items: [{ item_id: productId, item_name: productName, price: priceUsd }],

@@ -4,6 +4,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { CheckoutButton } from "@/components/CheckoutButton";
+import { AnalyticsOnMount } from "@/components/AnalyticsOnMount";
 import { Accordion } from "@/components/ui/Accordion";
 import { CheckIcon } from "@/components/icons";
 import { SITE } from "@/lib/site";
@@ -13,6 +14,7 @@ import { getAsset } from "@/lib/assets";
 import { buildClaimKit } from "@/lib/kit";
 import type { OwnerStatus } from "@/lib/claims";
 import { faqJsonLd, type QA } from "@/lib/faq";
+import { checkoutReturnEvent } from "@/lib/analytics-events";
 
 // Conversion + SEO page for the optional one-time products. Reads an optional pre-filled
 // claim context to personalise the preview. When billing for a product isn't live yet it
@@ -50,9 +52,10 @@ export default async function PremiumPage({ searchParams }: { searchParams: Prom
   const ownerRaw = str(sp.owner);
   const ownerStatus: OwnerStatus = (["self", "business", "heir"].includes(ownerRaw) ? ownerRaw : "self") as OwnerStatus;
   const value = Math.max(0, Number(str(sp.value)) || 0);
-  const status = str(sp.status); // "soon" | "error" when redirected back from checkout
+  const status = str(sp.status); // "soon" | "error" | "cancelled" when redirected back from checkout
   const requested = getProduct(str(sp.product));
   const personalised = Boolean(state && asset);
+  const returnEvent = checkoutReturnEvent(status, requested?.id ?? "unknown");
 
   const productLd = PRODUCTS.map((p) => ({
     "@context": "https://schema.org",
@@ -74,6 +77,7 @@ export default async function PremiumPage({ searchParams }: { searchParams: Prom
   return (
     <div className="space-y-12">
       <JsonLd data={[...productLd, breadcrumb, faqJsonLd(premiumFaq)]} />
+      {returnEvent && <AnalyticsOnMount call={returnEvent} />}
 
       <nav className="text-xs text-muted">
         <Link href="/" className="hover:text-ink">Home</Link> <span aria-hidden>/</span> Claim Kit & Estate Report

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import * as Sentry from "@sentry/nextjs";
 import { PrintButton } from "@/components/PrintButton";
 import { PurchaseTracked } from "@/components/PurchaseTracked";
+import { AnalyticsOnMount } from "@/components/AnalyticsOnMount";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { retrieveCheckoutSession, stripeConfigured } from "@/lib/stripe";
@@ -10,6 +11,8 @@ import { getProduct } from "@/lib/products";
 import { getState } from "@/lib/states";
 import { getAsset } from "@/lib/assets";
 import type { OwnerStatus } from "@/lib/claims";
+import { purchaseCall, purchaseFailureReason } from "@/lib/analytics-events";
+import { analyticsUserRef } from "@/lib/analytics-ref";
 
 // Post-payment delivery. Verifies the Stripe session server-side, then renders the buyer's
 // personalised kit straight from lib/kit.ts using the session metadata, no database. If the
@@ -51,6 +54,10 @@ export default async function Success({ searchParams }: { searchParams: Promise<
     });
     return (
       <Shell>
+        <AnalyticsOnMount
+          call={{ name: "purchase_confirmation_failed", params: { reason: purchaseFailureReason({ configured: stripeConfigured(), session }) } }}
+          onceKey={`purchase-failed:${sessionId}`}
+        />
         <h1 className="font-display text-2xl text-ink">We couldn&apos;t verify this payment yet</h1>
         <p className="text-body">
           {session && !session.paid
@@ -70,9 +77,19 @@ export default async function Success({ searchParams }: { searchParams: Promise<
   const ownerStatus: OwnerStatus = (["self", "business", "heir"].includes(m.owner ?? "") ? m.owner : "self") as OwnerStatus;
   const value = Math.max(0, Number(m.value) || 0);
 
+  // The payment is verified, so it counts as a purchase even if the kit below cannot be rebuilt.
+  // No accounts here: the buyer is a one-way reference to this checkout session.
+  const purchase = purchaseCall({ sessionId, amountTotal: session.amountTotal, currency: session.currency, product: product ?? null });
+  const tracker = purchase ? (
+    <PurchaseTracked call={purchase} userRef={analyticsUserRef(sessionId)} sessionId={sessionId} />
+  ) : (
+    <AnalyticsOnMount call={{ name: "purchase_confirmation_failed", params: { reason: purchaseFailureReason({ configured: true, session }) } }} onceKey={`purchase-failed:${sessionId}`} />
+  );
+
   if (!product || !state || !asset) {
     return (
       <Shell>
+        {tracker}
         <h1 className="font-display text-2xl text-ink">Payment received</h1>
         <p className="text-body">Thank you. We couldn&apos;t rebuild the claim details from this purchase, please contact us with your Stripe receipt and we&apos;ll send your kit straight over.</p>
       </Shell>
@@ -92,7 +109,7 @@ export default async function Success({ searchParams }: { searchParams: Promise<
 
   return (
     <article className="mx-auto max-w-2xl space-y-8 py-6">
-      <PurchaseTracked transactionId={sessionId} productId={product.id} productName={product.name} priceUsd={product.priceUsd} />
+      {tracker}
       <header className="flex flex-wrap items-start justify-between gap-3 border-b border-line pb-5">
         <div>
           <Badge className="print:hidden">Payment confirmed · {product.name}</Badge>

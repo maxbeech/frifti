@@ -48,7 +48,7 @@ async function handle(req: NextRequest) {
     const url = await createCheckoutSession({
       priceId: process.env[product.priceEnv]!,
       successUrl: `${origin}/success?session_id={CHECKOUT_SESSION_ID}`,
-      cancelUrl: `${origin}${back}`,
+      cancelUrl: `${origin}${back}&status=cancelled`,
       metadata: { product: product.id, state: state.slug, asset: asset.slug, owner, value },
     });
     return NextResponse.redirect(url, 303);
