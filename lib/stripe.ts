@@ -3,7 +3,7 @@
 // session and by /success to verify one. Everything degrades gracefully: when the secret
 // key is absent these helpers report "not configured" rather than throwing into the UI.
 
-import * as Sentry from "@sentry/nextjs";
+import { captureServerError, captureServerMessage } from "@/lib/observability";
 
 // Overridable so a full checkout journey can be exercised against a local double that speaks
 // Stripe's exact request/response contract, without real credentials. Defaults to the real API.
@@ -78,10 +78,7 @@ export async function retrieveCheckoutSession(id: string): Promise<VerifiedSessi
     if (!res.ok) {
       // Buyer just paid and lands on a page that cannot confirm it — a handled failure that
       // would otherwise leave them stalled on the "couldn't verify" state with no trace.
-      Sentry.captureMessage("stripe_session_verification_failed", {
-        level: "error",
-        extra: { sessionId: id, status: res.status },
-      });
+      captureServerMessage("stripe_session_verification_failed", { scope: "stripe", sessionId: id, status: res.status }, "error");
       return null;
     }
     const s = (await res.json()) as {
@@ -102,7 +99,7 @@ export async function retrieveCheckoutSession(id: string): Promise<VerifiedSessi
       currency: s.currency ?? null,
     };
   } catch (error) {
-    Sentry.captureException(error, { extra: { sessionId: id, stage: "retrieveCheckoutSession" } });
+    captureServerError(error, { scope: "stripe", sessionId: id, stage: "retrieveCheckoutSession" });
     return null;
   }
 }

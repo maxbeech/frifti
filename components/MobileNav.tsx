@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { AnimatePresence, motion } from "motion/react";
 import { MenuIcon, CloseIcon } from "@/components/icons";
+import { FeedbackButton } from "@/components/FeedbackButton";
 import { NAV_LINKS } from "@/lib/nav";
 
 export function MobileNav() {
@@ -75,6 +76,7 @@ export function MobileNav() {
                     {l.label}
                   </Link>
                 ))}
+                <FeedbackButton variant="drawer" onOpen={() => setOpen(false)} />
               </nav>
               <Link
                 href="/#search"

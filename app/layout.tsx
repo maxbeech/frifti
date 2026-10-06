@@ -7,6 +7,7 @@ import "./globals.css";
 import { SITE } from "@/lib/site";
 import { MobileNav } from "@/components/MobileNav";
 import { NAV_LINKS } from "@/lib/nav";
+import { FeedbackButton } from "@/components/FeedbackButton";
 import { JsonLd } from "@/components/JsonLd";
 import { OpenHelmAnalytics } from "../lib/openhelm-analytics";
 
@@ -78,6 +79,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
                   </Link>
                 ))}
               </nav>
+              <FeedbackButton variant="header" className="hidden sm:inline-flex" />
               <Link
                 href="/#search"
                 className="hidden shrink-0 rounded-lg bg-lime px-3 py-1.5 text-xs font-semibold text-ink hover:bg-lime-strong sm:inline-block sm:text-sm"
@@ -110,6 +112,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
                 <Link href="/disclosure" className="hover:text-white">Affiliate disclosure</Link>
                 <Link href="/privacy" className="hover:text-white">Privacy</Link>
                 <Link href="/terms" className="hover:text-white">Terms</Link>
+                <FeedbackButton variant="footer" className="sm:justify-self-end" />
               </nav>
             </div>
             <p className="mt-8 border-t border-white/10 pt-5 text-xs text-white/40">© 2026 {SITE.name}. All rights reserved.</p>

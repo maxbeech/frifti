@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import * as Sentry from "@sentry/nextjs";
+import { captureServerMessage } from "@/lib/observability";
 import { PrintButton } from "@/components/PrintButton";
 import { PurchaseTracked } from "@/components/PurchaseTracked";
 import { AnalyticsOnMount } from "@/components/AnalyticsOnMount";
@@ -48,9 +48,11 @@ export default async function Success({ searchParams }: { searchParams: Promise<
   if (!session || !session.paid) {
     // A buyer reaching this branch has (most likely) just paid and is stuck on an unverified
     // state — a handled failure that would otherwise leave them stalled with no trace at all.
-    Sentry.captureMessage("checkout_success_unverified", {
-      level: "warning",
-      extra: { sessionId, hasSession: Boolean(session), stripeConfigured: stripeConfigured() },
+    captureServerMessage("checkout_success_unverified", {
+      scope: "checkout",
+      sessionId,
+      hasSession: Boolean(session),
+      stripeConfigured: stripeConfigured(),
     });
     return (
       <Shell>

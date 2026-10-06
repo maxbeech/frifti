@@ -2,6 +2,16 @@
 
 All notable changes to Frifti are documented here.
 
+## 2026-10-06: Sentry standard
+
+- One scrubber (`lib/scrub.ts`) now covers errors, logs, breadcrumbs and transactions: emails, phone numbers,
+  bearer/JWT tokens, API keys and secret fields are redacted, query strings are stripped, long text is truncated before
+  matching, and any failure drops the item instead of sending it raw.
+- Logs are on everywhere (console forwarded, `Sentry.logger` for checkout). Server/edge init moved into `instrumentation.ts`;
+  added `app/global-error.tsx`; the tunnel path is now randomised per build.
+- Checkout and Stripe failures go through `captureServerError`, which only keeps ids, codes and counts.
+- New "Send feedback" control in the header, mobile menu and footer, opening Sentry's form (reports go to `frifti_web`).
+
 ## 2026-09-30: Instrument user journeys for OpenHelm
 
 - Added `checkout_failed`, `checkout_cancelled` and `purchase_confirmation_failed` so a stuck checkout is

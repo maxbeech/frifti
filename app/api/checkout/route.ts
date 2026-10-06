@@ -1,5 +1,5 @@
 import { NextResponse, type NextRequest } from "next/server";
-import * as Sentry from "@sentry/nextjs";
+import { captureServerError, logEvent } from "@/lib/observability";
 import { getProduct, isProductPurchasable } from "@/lib/products";
 import { createCheckoutSession } from "@/lib/stripe";
 import { getState } from "@/lib/states";
@@ -51,9 +51,10 @@ async function handle(req: NextRequest) {
       cancelUrl: `${origin}${back}&status=cancelled`,
       metadata: { product: product.id, state: state.slug, asset: asset.slug, owner, value },
     });
+    logEvent("info", "checkout_session_created", { product: product.id, state: state.slug, asset: asset.slug });
     return NextResponse.redirect(url, 303);
   } catch (error) {
-    Sentry.captureException(error, { extra: { product: product.id, state: state.slug, asset: asset.slug } });
+    captureServerError(error, { scope: "checkout", product: product.id, state: state.slug, asset: asset.slug });
     return NextResponse.redirect(new URL(`${back}&status=error`, req.nextUrl.origin), 303);
   }
 }
