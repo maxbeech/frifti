@@ -13,6 +13,8 @@ complexity, timeline) for your specific state, property type, and situation.
 - No database: the paid kit is delivered by verifying the Stripe session and regenerating the kit from session metadata
 - Sentry (`frifti_web`): errors, logs, performance sampling, source maps and a "Send feedback" control (header, mobile menu, footer). Everything passes through `lib/scrub.ts` first. Needs `NEXT_PUBLIC_SENTRY_DSN` at build time and `SENTRY_DSN` at runtime; without them it logs a console warning and reports nothing
 
+The Sentry scrubber (`lib/scrub.ts`) redacts secrets of any length, backs up to a clean boundary when it truncates, and fails closed; its regression tests are in `test/scrub-hardening.test.mts`.
+
 ## Brand
 Two colors, defined once as design tokens in `app/globals.css` and used everywhere else via
 Tailwind utilities (`bg-brand`, `text-lime`, `text-ink`, `border-line`, …) — never raw

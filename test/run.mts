@@ -11,3 +11,4 @@ import "./analytics-events.test.mts";
 import "./seo.test.mts";
 import "./no-vercel.test.mts";
 import "./sentry.test.mts";
+import "./scrub-hardening.test.mts";
