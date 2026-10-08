@@ -10,6 +10,10 @@
 
 All notable changes to Frifti are documented here.
 
+## 2026-10-08: Lint ignores Vercel build output
+
+- `npm run lint` no longer lints the gitignored `.vercel/` build output, which produced 21 errors unrelated to source code. Lint now exits 0.
+
 ## 2026-10-06: Sentry standard
 
 - One scrubber (`lib/scrub.ts`) now covers errors, logs, breadcrumbs and transactions: emails, phone numbers,
