@@ -9,6 +9,8 @@ complexity, timeline) for your specific state, property type, and situation.
 ## Stack
 - Next.js 16 (App Router) + TypeScript + Tailwind CSS v4
 - Static / ISR pages (1-week revalidation), self-hosted on Helm7 (`npm start` honours `$PORT`)
+- ESLint ignores generated `.next/` and legacy `.vercel/` deployment output, so release checks
+  run only against maintained source files.
 - Stripe Checkout for **one-time** products (env-gated; degrades to an honest "launching shortly" state when `STRIPE_*` is absent)
 - No database: the paid kit is delivered by verifying the Stripe session and regenerating the kit from session metadata
 - Sentry (`frifti_web`): errors, logs, performance sampling, source maps and a "Send feedback" control (header, mobile menu, footer). Everything passes through `lib/scrub.ts` first. Needs `NEXT_PUBLIC_SENTRY_DSN` at build time and `SENTRY_DSN` at runtime; without them it logs a console warning and reports nothing

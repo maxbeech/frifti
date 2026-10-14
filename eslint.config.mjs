@@ -11,6 +11,8 @@ const eslintConfig = defineConfig([
     ".next/**",
     "out/**",
     "build/**",
+    // Legacy deployment output can exist locally but is never application source.
+    ".vercel/**",
     "next-env.d.ts",
   ]),
 ]);

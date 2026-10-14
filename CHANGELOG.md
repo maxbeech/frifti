@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-14: Release verification
+
+- Excluded legacy `.vercel/output` build artefacts from ESLint so the release gate checks
+  only maintained application source. Frifti is deployed through Helm7.
+
 ## 2026-10-07: Sentry scrubber security pass
 
 - **Long secrets.** JWTs, bearer tokens, vendor keys (`sk_`, `whsec_`, `hlm_sk_`, `sntrys_`) and `key=value` secrets of any length are now redacted whole. The old bounded patterns left the tail of anything longer than their limit.
