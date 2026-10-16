@@ -14,6 +14,8 @@ const eslintConfig = defineConfig([
     // Legacy deployment output can exist locally but is never application source.
     ".vercel/**",
     "next-env.d.ts",
+    // Vercel build output (gitignored), not source
+    ".vercel/**",
   ]),
 ]);
 
