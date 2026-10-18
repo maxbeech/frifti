@@ -1,85 +1,218 @@
-# Frifti — Content Production Prioritisation Matrix
+# Frifti — SEO & GEO Content Plan
 
-Single reference for writers. Every page must do two jobs at once: rank in Google (SEO) and earn citations from AI assistants (GEO). The market is enormous and lightly defended — nearly every term below sits at LOW competition despite huge volume — so the constraint isn't difficulty, it's covering the entity space faster than anyone else.
+Refreshed 2026-10-18. Every page must rank in Google and earn citations from AI assistants, so each page leads with the free answer, names the official source and sits under one parent entity.
 
-Volumes are US average monthly searches (Google Keyword Planner, rolling 12 months to May 2026). Treat them as relative weighting, not gospel.
+Volumes: Google Ads Keyword Planner, US, average monthly searches, pulled 2026-10-18. Format: keyword | volume/competition. `unverified` means no Keyword Planner figure came back. `unrated` means a volume came back without a competition label.
 
-## How to use this
+## (1) Authority Pillars
+- unclaimed money | 90,500/LOW · Entity Category: the umbrella concept. Home page and pillar guide.
+- unclaimed property | 60,500/LOW · Entity Category: state-held dormant property. Hub for all 50 states.
+- missing money | 60,500/LOW · Entity Category: consumer synonym of the umbrella.
+- unclaimed funds | 49,500/LOW · Entity Category: the "funds" head variant (New York, Ohio).
+- claim money | 40,500/LOW · Entity Category: the claiming action, always framed as free.
+- money owed to me | 6,600/LOW · Entity Category: entitlement framing; the wizard's entry point.
 
-- **Tier 1** ships first: head terms and the high-volume state pages. These carry the traffic.
-- **Tier 2** is the conversion and monetisation layer: asset types, estate/heir, and the adjacent-money clusters (401k, life insurance, bonds) that feed our affiliate placements.
-- **Tier 3** is the GEO moat: question-shaped, definitional, trust pages that LLMs quote. Lower volume, disproportionate citation value.
-- One page = one parent entity. Don't split a state across two URLs; don't merge two states onto one.
+## (2) Zero-Click & GEO Champions
+**Questions (how, why, vs)**
+- how to find unclaimed money | 3,600/LOW
+- how to claim unclaimed money | 1,000/LOW
+- how to claim unclaimed property | 390/LOW
+- what is unclaimed property | 1,600/LOW
+- how long does it take to get unclaimed money | 110/LOW
+- how to find old 401k | 5,400/MEDIUM
+- is unclaimed money real | 40/LOW
+- are unclaimed money sites legit | 20/LOW
+- do you have to pay taxes on unclaimed money | 20/LOW
+- unclaimed money scams | 110/LOW
+- is missingmoney com legit | 2,900/LOW
+- missingmoney com reddit | 590/LOW
+- is unclaimed property search free | unverified
+- why do states hold unclaimed property | unverified
+- how to verify unclaimed property | unverified
+- how to claim unclaimed money for a business | unverified
+- what documents do you need to claim unclaimed property | unverified
+- claimittexas.gov legit | 1,000/unrated
+- is claim it texas legit | 260/LOW
+- missingmoney com alternative | unverified
+- claimittexas gov legit | 1,300/LOW
+- is claimittexas gov legit | 480/LOW
+- is claimittexas.gov legit | 480/LOW
 
-## GEO ground rules (apply to every page)
+**Connected Entities** (government portals, associations and named competitors)
+- naupa | 3,600/LOW
+- claimittexas | 14,800/LOW
+- claimittexas gov | 8,100/LOW
+- find mass money | 18,100/LOW
+- fltreasurehunt | 1,300/LOW
+- fltreasurehunt gov search | 880/LOW
+- ctbiglist | 1,600/LOW
+- nccash com unclaimed money | 320/LOW
+- us treasury unclaimed money | 14,800/LOW
+- missingmoney com | unverified
 
-1. Answer the question in the first 40 words, before any preamble. Assistants lift the opening sentence.
-2. Lead with a direct, declarative claim ("Claiming from a US state is always free."). Hedged prose doesn't get quoted.
-3. State the source: name the agency, link the official portal, cite NAUPA. Provenance is what makes a model trust us.
-4. Use real numbers (timelines in weeks, document counts) — extractable facts get cited.
-5. One FAQ block per page in plain Q&A, marked up with FAQ schema.
+## (3) High-Intent Closers
+**Best and pricing terms**
+- unclaimed money search free | 12,100/LOW
+- find unclaimed money for free | 12,100/LOW
+- free unclaimed money search by social security number | 9,900/LOW
+- free unclaimed money | 320/LOW
+- free unclaimed property search | 50/LOW
+- unclaimed money finder | 590/LOW
+- irs unclaimed money free search | 1,300/LOW
+- unclaimed inheritance free search | 1,000/LOW
+- unclaimed property search | 3,600/LOW
 
----
+**Attribute Entities** (asset type, retirement, bank and insurance)
+- unclaimed life insurance | 480/LOW
+- life insurance policy finder | 880/MEDIUM
+- unclaimed settlement money | 880/LOW
+- surplus funds | 2,400/LOW
+- unclaimed savings bonds search by name | 1,000/LOW
+- lost 401k | 1,300/MEDIUM
+- lost pension | 90/LOW
+- dormant bank account | 260/LOW
+- lost bank account | 90/LOW
+- treasurydirect gov unclaimed bonds | 10/unrated
+- find 401k by social security number | unverified
+- consolidate old 401k | unverified
 
-## TIER 1 — Head terms & demand drivers
+## (4) Hidden Gems
+Competition index 0 to 4 on specific jurisdictions, documents or estate cases. A state portal or a single form is the answer, and finder sites rarely own these pages.
+- find unclaimed money by social security number | 90/LOW
+- unclaimed property nc | 6,600/LOW
+- nc cash | 4,400/LOW
+- unclaimed money nc free search | 1,300/LOW
+- unclaimed money in pa free search | 2,400/LOW
+- unclaimed money michigan free | 1,000/LOW
+- unclaimed property all states | 210/LOW
+- unclaimed money all states | 70/LOW
+- unclaimed money from deceased relatives | 70/LOW
+- unclaimed property for deceased | 20/LOW
+- unclaimed inheritance search | 210/LOW
+- unclaimed refunds | 140/LOW
+- unclaimed checks | 590/LOW
+- treasury unclaimed money | 2,900/LOW
 
-**Cluster: Unclaimed money (the category itself).** The parent entity everything hangs off. Home page plus a pillar guide.
-`unclaimed money` (110k) · `unclaimed property` (60.5k) · `unclaimed funds` (49.5k) · `missing money` (49.5k) · `find lost money` (22.2k) · `claim money` (22.2k) · `unclaimed money search free` (12.1k) · `find unclaimed money for free` (12.1k) · `free unclaimed money search by social security number` (8.1k) · `money owed to me` (12.1k) · `us treasury unclaimed money` (12.1k) · `unclaimed` (9.9k) · `find unclaimed money` (5.4k) · `unclaimed property search` (4.4k) · `check for unclaimed money` (5.4k) · `unclaimed money search` · `lost money` (12.1k)
+## (5) Semantic Clusters
+Other keywords with a Keyword Planner volume, ordered within each cluster by volume × ease (volume × (100 − competition index) ÷ 100). Terms without brand fit were dropped.
 
-Note the repeated word "**free**" — it's hard-wired into intent. Every page must say claiming is free up top, then earn revenue downstream, never gate the search.
+**State unclaimed property (parent: unclaimed property)**
+- california unclaimed property | 110,000/LOW
+- texas unclaimed property | 49,500/LOW
+- illinois unclaimed property | 40,500/LOW
+- michigan unclaimed property | 33,100/LOW
+- unclaimed funds ohio | 33,100/LOW
+- florida unclaimed property | 27,100/LOW
+- georgia unclaimed property | 27,100/LOW
+- unclaimed money california | 27,100/LOW
+- ohio unclaimed funds | 27,100/LOW
+- maryland unclaimed property | 22,200/LOW
+- virginia unclaimed property | 22,200/LOW
+- unclaimed money florida | 22,200/LOW
+- unclaimed money nc | 22,200/LOW
+- washington unclaimed property | 18,100/LOW
+- colorado unclaimed property | 18,100/LOW
+- tennessee unclaimed property | 18,100/LOW
+- oklahoma unclaimed property | 14,800/LOW
+- unclaimed property florida | 14,800/LOW
+- nevada unclaimed property | 14,800/LOW
+- new jersey unclaimed property | 14,800/LOW
+- unclaimed property new jersey | 14,800/LOW
+- missouri unclaimed property | 12,100/LOW
+- oregon unclaimed property | 12,100/LOW
+- south carolina unclaimed property | 12,100/LOW
+- alabama unclaimed property | 12,100/LOW
+- kentucky unclaimed property | 12,100/LOW
+- unclaimed property kentucky | 12,100/LOW
+- arizona unclaimed property | 9,900/LOW
+- louisiana unclaimed property | 9,900/LOW
+- wisconsin unclaimed property | 9,900/LOW
+- west virginia unclaimed property | 8,100/LOW
+- minnesota unclaimed property | 8,100/LOW
+- utah unclaimed property | 8,100/LOW
+- maine unclaimed property | 8,100/LOW
+- kansas unclaimed property | 8,100/LOW
+- unclaimed property new york | 8,100/LOW
+- unclaimed money south carolina | 8,100/LOW
+- massachusetts unclaimed property | 8,100/LOW
+- pennsylvania unclaimed property | 6,600/LOW
+- nebraska unclaimed property | 6,600/LOW
+- north carolina unclaimed property | 6,600/LOW
+- indiana unclaimed property | 6,600/LOW
+- mississippi unclaimed property | 4,400/LOW
+- delaware unclaimed property | 4,400/LOW
+- idaho unclaimed property | 4,400/LOW
+- new york unclaimed funds | 3,600/LOW
+- new mexico unclaimed property | 3,600/LOW
+- dc unclaimed property | 2,900/LOW
+- alaska unclaimed property | 2,900/LOW
+- unclaimed money texas for free | 2,900/LOW
+- rhode island unclaimed property | 2,400/LOW
+- montana unclaimed property | 2,400/LOW
+- south dakota unclaimed property | 2,400/LOW
+- north dakota unclaimed property | 2,400/LOW
+- iowa unclaimed property | 1,900/LOW
+- unclaimed money indiana for free | 720/LOW
 
-**Cluster: State unclaimed property (50 + DC + PR).** These are *types of* the parent — one templated page each, linked to the official portal. The single biggest traffic block.
-California (110k) · Ohio (40.5k) · Michigan (40.5k) · Illinois (33.1k) · Florida (27.1k) · Georgia (27.1k) · Tennessee (18.1k) · Maryland (18.1k) · Washington (18.1k) · Virginia (18.1k) · Colorado (18.1k) · Nevada (14.8k) · New Jersey (14.8k) · Missouri (12.1k) · Arizona (12.1k) · South Carolina (12.1k) · Alabama (12.1k) · Oregon (12.1k) · Oklahoma (12.1k) · Texas (9.9k) · Louisiana (9.9k) · Wisconsin (9.9k) · Minnesota (8.1k) · Massachusetts (8.1k) · Utah (8.1k) · West Virginia (8.1k) · Maine (8.1k) · Indiana (6.6k) · Pennsylvania (6.6k) · Nebraska (6.6k) · Kentucky (5.4k) · Mississippi (5.4k) · North Carolina (4.4k) · Kansas (4.4k) · Delaware (4.4k) · New York "unclaimed funds" (3.6k) · New Mexico (3.6k) · DC (2.9k) · Iowa (2.9k) · Alaska (2.9k) · Idaho (2.9k) · Montana (2.4k) · Rhode Island (2.4k) · South Dakota (2.4k) · North Dakota (2.4k) · Connecticut (1.9k) · Vermont (1.9k) · Wyoming (1.9k) · New Hampshire (1.6k) · Hawaii (1.3k) · Puerto Rico (260)
+**Assets and property types (parent: unclaimed money)**
+- unclaimed cash | 1,600/LOW
+- unclaimed assets | 1,600/LOW
+- unclaimed property money | 720/LOW
+- unclaimed property and money | 720/LOW
+- unclaimed assets search | 590/LOW
+- unclaimed insurance money | 590/LOW
+- unclaimed benefits | 320/LOW
+- unclaimed bonds | 260/LOW
+- unclaimed bank accounts | 140/LOW
+- unclaimed retirement funds | 170/LOW
+- forgotten 401k | 140/MEDIUM
+- unclaimed inheritance money | 90/LOW
 
-Match each state's own wording: New York and Ohio search "**funds**", most others "**property**". Build both head variants into the H1/title.
+**Search and finder intent (parent: unclaimed money)**
+- unclaimed | 9,900/LOW
+- check for unclaimed money | 5,400/LOW
+- find unclaimed money | 5,400/LOW
+- unclaimed money search | 4,400/LOW
+- free money search | 480/LOW
+- find my unclaimed money | 390/LOW
 
----
+**Missing and lost money (parent: missing money)**
+- lost money | 5,400/LOW
+- missing money california | 2,900/LOW
+- missing money search | 2,900/LOW
+- find my money | 2,900/LOW
+- lost money search | 2,400/LOW
+- find money | 2,400/LOW
+- find lost money | 2,400/LOW
+- find missing money | 1,300/LOW
 
-## TIER 2 — Asset types & monetisation feeders
+**Federal and government (parent: unclaimed funds)**
+- unclaimed fund | 49,500/LOW
+- government list of unclaimed money | 2,900/LOW
+- usa gov unclaimed money | 2,900/LOW
+- irs unclaimed money | 2,400/LOW
+- unclaimed money federal | 2,400/LOW
+- state treasury unclaimed money | 1,900/LOW
+- unclaimed money gov | 1,900/LOW
+- government unclaimed money | 1,000/LOW
+- unclaimed money from the government | 1,000/LOW
+- state unclaimed money | 1,000/LOW
+- find unclaimed funds | 1,000/LOW
+- unclaimed treasury | 590/LOW
+- state treasury unclaimed funds | 170/LOW
 
-**Cluster: Property types.** These are *kinds of* unclaimed property. Each gets a guide crossed with the state grid (state × asset) and is where affiliate offers sit.
-`unclaimed life insurance` (480) · `life insurance policy finder` (480, HIGH-value clicks ~$25 CPC) · `unclaimed insurance money` (590) · `unclaimed settlement money` (590) · `surplus funds` (1.9k) · `unclaimed savings bonds search by name` (720) · `treasurydirect gov unclaimed bonds` · `dormant bank account` (260) · `lost bank account` (110) · `unclaimed assets` (1.6k)
+**Owed money (parent: money owed to me)**
+- find money owed to me | 6,600/LOW
+- owed money | 2,900/LOW
+- unclaimed money owed to me | 1,600/LOW
 
-**Cluster: Lost retirement money.** Adjacent entity, distinct portals (DOL, PBGC, beagle) — prime affiliate territory.
-`how to find old 401k` (6.6k) · `lost 401k` (1.3k) · `forgotten 401k` (140) · `find 401k by social security number` · `consolidate old 401k` · `unclaimed retirement funds` (170) · `lost pension` (90)
+**Claim process (parent: claim money)**
+- claim unclaimed money | 5,400/LOW
+- claim property | 2,400/LOW
+- claim your money | 1,300/LOW
+- claim my money | 1,000/LOW
+- claim unclaimed property | 880/LOW
+- claim abandoned property | 170/LOW
 
-**Cluster: Estate & heir claims.** Highest-value persona (probate, multi-asset, will pay for a report). Lower volume — partner-led distribution, not just SEO.
-`unclaimed inheritance free search` (880) · `unclaimed inheritance search` (210) · `unclaimed money from deceased relatives` (90) · `unclaimed property for deceased` (20) · `how to find unclaimed money from deceased relative` · `how to claim deceased parents unclaimed property` · `unclaimed inheritance money`
-
-**Cluster: Federal & "owed to me" money.** Sibling sources beyond state treasuries.
-`irs unclaimed money` (2.9k) · `irs unclaimed money free search` (1.6k) · `unclaimed money federal` (1.9k) · `government unclaimed money` (880) · `government list of unclaimed money` (2.4k) · `unclaimed money owed to me` (1.6k) · `find money owed to me` (2.4k) · `owed money` (1.9k)
-
----
-
-## TIER 3 — GEO / citation & trust layer
-
-**Cluster: How-to & process.** Question-shaped, the format assistants quote verbatim.
-`how to find unclaimed money` (3.6k) · `what is unclaimed property` (1.6k) · `how to claim unclaimed money` (1k) · `how to claim unclaimed property` (390) · `how long does it take to get unclaimed money` (110) · `how to claim unclaimed money for a business` · `how to verify unclaimed property` · `claim unclaimed money` (5.4k)
-
-**Cluster: Trust, legitimacy & scams.** Defensive content that converts sceptics and wins "is X legit" citations.
-`is missingmoney.com legit` (1.9k) · `unclaimed money scams` (140) · `is unclaimed money real` (30) · `are unclaimed money sites legit` · `do you have to pay taxes on unclaimed money` · `missingmoney com reddit` (480)
-
-**Cluster: Branded / navigational (competitor + governing body).** People search these by name — intercept with comparison and explainer pages.
-`naupa` (3.6k) · `missingmoney com` (14.8k) · `is missingmoney.com legit` (1.9k) · `find mass money` (27.1k) · `claimittexas` (14.8k) · `claimittexas gov` (8.1k) · `fltreasurehunt` (1.9k) · `fltreasurehunt gov search` (1.3k) · `ctbiglist` (720) · `nccash com unclaimed money` (210)
-
----
-
-## Build order
-
-1. Home + "unclaimed money" pillar, with the free-to-claim message and the wizard.
-2. Top 15 states by volume (California through New Jersey) — roughly 70% of state demand.
-3. Remaining 37 jurisdictions from the template.
-4. Asset-type guides + 401k/insurance/bonds feeders (affiliate offers live here).
-5. GEO trust + how-to set; "vs MissingMoney.com" and branded intercepts.
-6. Estate/heir track, paired with partner outreach rather than relying on search alone.
-
-Keep the official portal link above the fold on every state and asset page. That single outbound link is what separates us from the finder services — and it's what the assistants reward.
-
-## Monetisation (how the traffic pays)
-
-Free stays the headline; revenue sits downstream of the wizard so it never dents the "always free" trust signal.
-
-- **One-time products** (`/premium`): the Claim Kit ($14.99) and Estate Claim Report ($49) — optional, never a subscription, never a fee to claim. Surfaced contextually under wizard results and on the pricing block. `/premium` itself targets help-intent queries ("how to claim unclaimed money", "unclaimed property claim help", estate/heir terms).
-- **Affiliate** (Tier-2 feeders): contextual partner links tied to a real step — online notarisation (when a notarised form is likely), estate help (heir flows), and free finders for old 401(k)s and lost life policies (the $25-CPC adjacency). Disclosed, relevance-gated, with free/official tools shown alongside.
-
-Writer rule: lead every page with the free path; mention paid help only after the free answer is fully given. The Tier-2 feeder clusters above (401k, life insurance, estate) are where partner context belongs.
+**Abandoned and other property (parent: unclaimed property)**
+- abandoned property | 2,400/LOW
