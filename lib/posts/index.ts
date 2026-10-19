@@ -17,6 +17,7 @@ import { post as trustAndWillEstatePlanningReview } from "./data/trust-and-will-
 import { post as unclaimedInheritanceFromDeceasedRelative } from "./data/unclaimed-inheritance-from-deceased-relative";
 import { post as unclaimedLifeInsurancePolicyFinder } from "./data/unclaimed-life-insurance-policy-finder";
 import { post as unclaimedMoneyByStateDataStudy } from "./data/unclaimed-money-by-state-data-study";
+import { post as unclaimedMoneyInPennsylvaniaFreeSearch } from "./data/unclaimed-money-in-pennsylvania-free-search";
 import { post as unclaimedMoneyScamsRedFlags } from "./data/unclaimed-money-scams-red-flags";
 import { post as unclaimedSettlementMoney } from "./data/unclaimed-settlement-money";
 import { post as unclaimedSurplusFundsCaseStudy } from "./data/unclaimed-surplus-funds-case-study";
@@ -52,6 +53,7 @@ export const POSTS: Post[] = [
   findMassMoneyFindmassmoneyGovExplained,
   governmentUnclaimedMoneyFullList,
   unclaimedSettlementMoney,
+  unclaimedMoneyInPennsylvaniaFreeSearch,
   ...september2026PublicationBatch,
 ];
 
