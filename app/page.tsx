@@ -159,7 +159,7 @@ export default function Home() {
                     </li>
                   ))}
                 </ul>
-                <Button href={`/premium?product=${p.id}`} variant={featured ? "primary" : "secondary"} size="sm" className="mt-6">
+                <Button href="/premium" variant={featured ? "primary" : "secondary"} size="sm" className="mt-6">
                   See what&apos;s inside
                 </Button>
               </div>

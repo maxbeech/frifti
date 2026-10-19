@@ -48,6 +48,7 @@ export function ClaimKitCta({
       <p className="mt-1 text-sm text-body">{product.tagline}</p>
       <Button
         href={href}
+        rel="nofollow"
         variant="primary"
         size="sm"
         className="mt-3"

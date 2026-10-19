@@ -25,10 +25,12 @@ export type ButtonProps = {
   children: React.ReactNode;
   onClick?: () => void;
   type?: "button" | "submit";
+  /** Internal links only: e.g. "nofollow" for personalised, parameterised URLs. */
+  rel?: string;
   "aria-label"?: string;
 };
 
-export function Button({ href, variant = "primary", size = "md", icon = "arrow", className = "", children, onClick, type = "button", ...rest }: ButtonProps) {
+export function Button({ href, variant = "primary", size = "md", icon = "arrow", className = "", children, onClick, type = "button", rel, ...rest }: ButtonProps) {
   const classes = `group inline-flex items-center gap-1.5 rounded-lg font-semibold transition-colors duration-150 ${VARIANT_CLASSES[variant]} ${SIZE_CLASSES[size]} ${className}`;
   const iconClass = "h-4 w-4 shrink-0 transition-transform duration-150 group-hover:translate-x-0.5";
   const content = (
@@ -67,7 +69,7 @@ export function Button({ href, variant = "primary", size = "md", icon = "arrow",
   }
 
   return (
-    <Link href={href} onClick={onClick} className={classes} {...rest}>
+    <Link href={href} rel={rel} onClick={onClick} className={classes} {...rest}>
       {content}
     </Link>
   );
