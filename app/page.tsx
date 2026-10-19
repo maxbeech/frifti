@@ -200,6 +200,13 @@ export default function Home() {
             </Reveal>
           ))}
         </div>
+        <ul className="grid gap-x-6 gap-y-1.5 text-sm sm:grid-cols-2">
+          {[...POSTS].sort((a, b) => (a.published < b.published ? 1 : -1)).slice(3).map((p) => (
+            <li key={p.slug}>
+              <Link href={`/blog/${p.slug}`} className="text-ink hover:underline">{p.title}</Link>
+            </li>
+          ))}
+        </ul>
       </section>
 
       {/* FAQ */}

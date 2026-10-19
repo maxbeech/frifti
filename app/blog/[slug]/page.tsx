@@ -58,6 +58,10 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
   const url = `${SITE.url}/blog/${post.slug}`;
   const toc = buildToc(post.body);
   const related = post.related.map((s) => getPost(s)).filter((p): p is NonNullable<typeof p> => Boolean(p));
+  const relatedSlugs = new Set([post.slug, ...related.map((r) => r.slug)]);
+  const moreGuides = [...POSTS]
+    .filter((p) => !relatedSlugs.has(p.slug))
+    .sort((a, b) => (a.published < b.published ? 1 : -1));
   const breadcrumb = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -121,6 +125,19 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
             {related.map((r) => (
               <li key={r.slug}>
                 <Link href={`/blog/${r.slug}`} className="text-ink hover:underline">{r.title}</Link>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+
+      {moreGuides.length > 0 && (
+        <section className="space-y-2 pt-2">
+          <h2 className="text-lg font-semibold text-ink">More unclaimed property guides</h2>
+          <ul className="list-disc space-y-1 pl-5">
+            {moreGuides.map((g) => (
+              <li key={g.slug}>
+                <Link href={`/blog/${g.slug}`} className="text-ink hover:underline">{g.title}</Link>
               </li>
             ))}
           </ul>
