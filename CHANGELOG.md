@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-20: On-page SEO fixes
+
+- Home page (`app/page.tsx`) exports its own `metadata`: a distinct title and a 123-character description, replacing the layout fallback.
+- Audit rows for `app/layout.tsx` (missing description) and `app/blog/[slug]/page.tsx` (missing metadata) were already resolved on master: the layout sets `SITE.description`, and the post route has `generateMetadata`. No change.
+
 ## 2026-10-20: SEO consolidation after the August spam update
 
 - `/unclaimed-property/{state}/{asset}` (312 pages) now 301s to the state hub; hub links to them removed.

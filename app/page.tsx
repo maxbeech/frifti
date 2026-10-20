@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { ClaimFinder } from "@/components/ClaimFinder";
@@ -17,6 +18,15 @@ import { PRODUCTS } from "@/lib/products";
 import { POSTS } from "@/lib/posts";
 
 const CATEGORY_LABEL: Record<string, string> = { academy: "Academy", news: "News", reviews: "Review" };
+
+// Home page metadata. The brand is written in full: the layout's title template is not
+// applied to the page itself. Open Graph and Twitter fall back to the layout values.
+export const metadata: Metadata = {
+  title: "Find unclaimed money in all 50 states | Frifti",
+  description:
+    "Search every state's official unclaimed property portal for free, then follow a checklist to claim your money. No fee, ever.",
+  alternates: { canonical: SITE.url },
+};
 
 export default function Home() {
   const latestPosts = [...POSTS].sort((a, b) => (a.published < b.published ? 1 : -1)).slice(0, 3);
