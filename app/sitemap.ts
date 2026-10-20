@@ -36,8 +36,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.5,
   }));
 
-  // State-and-asset pages remain available as contextual tools from their state hub and
-  // claim flow, but they deliberately stay out of the sitemap. Their six shared templates
-  // do not merit competing with the independently useful state hubs and editorial guides.
+  // /unclaimed-property/{state}/{asset} no longer exists (301 to the state hub), so only hubs and guides are listed.
   return [...staticPages, ...statePages, ...postPages];
 }

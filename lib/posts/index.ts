@@ -24,7 +24,6 @@ import { post as unclaimedSurplusFundsCaseStudy } from "./data/unclaimed-surplus
 import { post as whatDocumentsToClaimUnclaimedProperty } from "./data/what-documents-to-claim-unclaimed-property";
 import { post as whatIsNaupaUnclaimedProperty } from "./data/what-is-naupa-unclaimed-property";
 import { post as whyDoStatesHoldUnclaimedProperty } from "./data/why-do-states-hold-unclaimed-property";
-import { september2026PublicationBatch } from "./data/september-2026-publication-batch";
 
 export type { Post, PostCategory, ContentFormat, Block, FeaturedImage, ReviewMeta } from "./types";
 
@@ -54,7 +53,6 @@ export const POSTS: Post[] = [
   governmentUnclaimedMoneyFullList,
   unclaimedSettlementMoney,
   unclaimedMoneyInPennsylvaniaFreeSearch,
-  ...september2026PublicationBatch,
 ];
 
 export function getPost(slug: string): Post | undefined {

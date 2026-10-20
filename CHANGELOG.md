@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-20: SEO consolidation after the August spam update
+
+- `/unclaimed-property/{state}/{asset}` (312 pages) now 301s to the state hub; hub links to them removed.
+- 15 guides built from one shared template removed, each 301ing to the closest real guide or state hub (`lib/redirects.ts`).
+- Sitemap 99 -> 84 URLs. Diagnosis and family table in `docs/seo_recovery_2026_10.md`.
+
 ## 2026-10-14: Release verification
 
 - Excluded legacy `.vercel/output` build artefacts from ESLint so the release gate checks

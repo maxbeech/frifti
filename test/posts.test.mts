@@ -29,13 +29,9 @@ test("expects at least 20 posts", () => {
   assert.ok(POSTS.length >= 20, `expected at least 20 posts, found ${POSTS.length}`);
 });
 
-test("includes the 15-post September 2026 publication batch", () => {
+test("the templated September 2026 batch stays removed", () => {
   const batch = POSTS.filter((p) => p.published >= "2026-09-24" && p.published <= "2026-09-30");
-  assert.strictEqual(batch.length, 15, `expected 15 September posts, found ${batch.length}`);
-  for (const p of batch) {
-    assert.ok(wordCount(p.body) >= 1200, `${p.slug} body is under the 1,200-word publication brief minimum`);
-    assert.ok(p.title.length < 60, `${p.slug} title is ${p.title.length} chars (max 59)`);
-  }
+  assert.strictEqual(batch.length, 0, "templated September posts were consolidated away; see docs/seo_recovery_2026_10.md");
 });
 
 test("slugs are unique and match published category enum", () => {

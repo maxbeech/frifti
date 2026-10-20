@@ -5,10 +5,8 @@ import { ClaimFinder } from "@/components/ClaimFinder";
 import { JsonLd } from "@/components/JsonLd";
 import { Button } from "@/components/ui/Button";
 import { Accordion } from "@/components/ui/Accordion";
-import { AssetIcon } from "@/components/icons/AssetIcon";
 import { SITE } from "@/lib/site";
 import { STATES, getState } from "@/lib/states";
-import { ASSET_TYPES } from "@/lib/assets";
 import { faqJsonLd, type QA } from "@/lib/faq";
 
 export const dynamicParams = false;
@@ -89,27 +87,6 @@ export default async function StatePage({ params }: { params: Promise<{ state: s
       <section>
         <h2 className="mb-4 font-display text-2xl text-ink">Build your free {s.name} claim checklist</h2>
         <ClaimFinder initialState={s.slug} />
-      </section>
-
-      <section className="space-y-4">
-        <h2 className="font-display text-2xl text-ink">Search {s.name} by property type</h2>
-        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-          {ASSET_TYPES.map((a) => (
-            <Link
-              key={a.slug}
-              href={`/unclaimed-property/${s.slug}/${a.slug}`}
-              className="group flex items-start gap-3 rounded-xl border border-line bg-surface p-4 transition-colors hover:border-ink"
-            >
-              <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-lime/40 text-ink">
-                <AssetIcon slug={a.slug} className="h-4 w-4" />
-              </span>
-              <span>
-                <span className="block font-semibold text-ink">{a.name}</span>
-                <span className="mt-0.5 block text-sm text-body">{a.short}</span>
-              </span>
-            </Link>
-          ))}
-        </div>
       </section>
 
       <section className="space-y-4">
