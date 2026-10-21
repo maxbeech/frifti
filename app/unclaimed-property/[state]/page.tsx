@@ -26,6 +26,9 @@ export async function generateMetadata({ params }: { params: Promise<{ state: st
     title,
     description,
     alternates: { canonical: `${SITE.url}/unclaimed-property/${s.slug}` },
+    // Hubs differ only by agency name and portal URL; they stay reachable for visitors from the home
+    // page and guides but are kept out of the index (see docs/seo_recovery_2026_10.md).
+    robots: { index: false, follow: true },
     openGraph: { title, description, url: `${SITE.url}/unclaimed-property/${s.slug}` },
   };
 }

@@ -1,11 +1,10 @@
 import type { MetadataRoute } from "next";
 import { SITE } from "@/lib/site";
-import { STATES } from "@/lib/states";
 import { POSTS } from "@/lib/posts";
 
 // The state/asset directory content (lib/states.ts, lib/assets.ts) last changed on this date.
 // Bump it when that data actually changes — using build/request time here would tell crawlers
-// every one of the 364 programmatic pages was "just updated" on every deploy, which isn't true.
+// every programmatic page was "just updated" on every deploy, which isn't true.
 const DIRECTORY_LAST_UPDATED = new Date("2026-07-01");
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -22,13 +21,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/terms`, lastModified: now, changeFrequency: "yearly", priority: 0.2 },
   ];
 
-  const statePages: MetadataRoute.Sitemap = STATES.map((s) => ({
-    url: `${base}/unclaimed-property/${s.slug}`,
-    lastModified: DIRECTORY_LAST_UPDATED,
-    changeFrequency: "weekly",
-    priority: 0.8,
-  }));
-
   const postPages: MetadataRoute.Sitemap = POSTS.map((p) => ({
     url: `${base}/blog/${p.slug}`,
     lastModified: new Date(p.updated),
@@ -36,6 +28,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.5,
   }));
 
-  // /unclaimed-property/{state}/{asset} no longer exists (301 to the state hub), so only hubs and guides are listed.
-  return [...staticPages, ...statePages, ...postPages];
+  // /unclaimed-property/{state}/{asset} no longer exists (301 to the state hub), and the state hubs are noindex, so only static pages and guides are listed.
+  return [...staticPages, ...postPages];
 }

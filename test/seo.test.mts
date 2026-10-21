@@ -19,10 +19,12 @@ test("uses the www origin as the only sitemap origin", () => {
   assert.strictEqual(SITE.url, "https://www.frifti.com", "central canonical origin must be HTTPS www");
 });
 
-test("includes only substantive state hubs and editorial guides", () => {
+test("lists only static pages and editorial guides; state hubs are noindex and unlisted", () => {
   const sitemapSource = readFileSync(new URL("../app/sitemap.ts", import.meta.url), "utf8");
-  assert.strictEqual(7 + STATES.length + POSTS.length, 84, "unexpected intended sitemap URL count");
-  assert.match(sitemapSource, /const statePages(?:: MetadataRoute\.Sitemap)? = STATES\.map/, "state hubs missing from sitemap route");
+  assert.strictEqual(7 + POSTS.length, 32, "unexpected intended sitemap URL count");
+  assert.doesNotMatch(sitemapSource, /statePages|STATES/, "state hubs must not be in the sitemap");
+  const hub = readFileSync(new URL("../app/unclaimed-property/[state]/page.tsx", import.meta.url), "utf8");
+  assert.match(hub, /robots: \{ index: false, follow: true \}/, "state hubs must be noindex,follow");
   assert.match(sitemapSource, /const postPages(?:: MetadataRoute\.Sitemap)? = POSTS\.map/, "editorial guides missing from sitemap route");
   assert.doesNotMatch(sitemapSource, /assetPages/, "state-and-asset pages must not be in sitemap");
 });

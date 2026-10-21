@@ -12,7 +12,7 @@ Impressions 2026-07-01 to 2026-08-17 by family:
 
 | Family | Pattern | URLs | Impressions | Clicks | Verdict | Reason |
 | --- | --- | --- | --- | --- | --- | --- |
-| State hubs | `/unclaimed-property/{state}` | 52 | 16,325 | 17 | keep | Each has its own official portal and agency. The rest of the page is shared, so they are thin; see "Not done". |
+| State hubs | `/unclaimed-property/{state}` | 52 | 16,325 | 17 | noindex (2026-10-21) | Only the agency name and portal URL differ; the rest is the shared claim checklist. First judged keep; re-judged on 2026-10-21 as failing the distinct-data test. Pages stay live for visitors (the home page and guides link to them) but carry `noindex,follow` and are out of the sitemap. |
 | State x asset | `/unclaimed-property/{state}/{asset}` | 312 | 707 | 15 | merge | Six shared texts with the state name swapped. No state-specific rules are stored for any asset type. Was already `noindex` and out of the sitemap since 2026-09-20. Now 301 to the hub. |
 | Hand-written guides | `/blog/{slug}` | 25 | 3,224 (incl. anchors) | 15 | keep | Individually written, distinct topics. |
 | Templated guides | `/blog/{slug}` | 15 | 0 (published after the cliff) | 0 | merge | Built by one `makePost` function: the same ~15 paragraphs and fictional worked examples with the topic swapped. 301 to the closest real guide (or state hub). Nothing unique to move across. |
@@ -22,11 +22,11 @@ Impressions 2026-07-01 to 2026-08-17 by family:
 
 - `/unclaimed-property/{state}/{asset}` removed; permanent redirect to the state hub. Property-type links removed from the hub.
 - 15 templated guides removed with permanent redirects (map in `lib/redirects.ts`). Three state explainers (Florida, Connecticut, North Carolina) go to their state hub; the rest go to the strongest related hand-written guide.
-- Sitemap: 99 URLs before, 84 after (7 static, 52 hubs, 25 guides).
+- Sitemap: 99 URLs before, 84 after (7 static, 52 hubs, 25 guides). On 2026-10-21 the hubs were removed too: 32 URLs (7 static, 25 guides).
 - Tests in `test/seo.test.mts` check the redirects, that every target is a live page, that no removed slug is still published, and the sitemap count.
 
 ## Not done
 
-- State hubs share their text apart from name, agency and portal. If the next update still hits the site, the hubs are the next place to look. They need real per-state data (dormancy periods, value limits, claim rules) with sources; none is stored today and it was not invented here.
+- State hubs are now noindex. To make them indexable again they need real per-state data (dormancy periods, value limits, claim rules) with sources; none is stored today and it was not invented here.
 - The 25 remaining guides were not individually fact-checked for invented examples.
 - Recovery takes months; do not expect movement before the next core or spam update.
