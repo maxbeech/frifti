@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-21: Content refresh (weekly lifecycle pass)
+
+- `claimittexas-gov-explained`: leads with the direct answer and the official site title; removes an unverifiable notarisation threshold, an undated payout timeline, an unsourced popularity claim and a quote attributed to a named staff member who appears nowhere else in the repo. Adds a "what to do after a match / no match" section. `updated` set to 2026-10-21.
+- `what-documents-to-claim-unclaimed-property`: removes an unattributed reader anecdote, a quote attributed to a named staff member who appears nowhere else in the repo, and unsourced state notarisation thresholds (now "varies by state"). `updated` set to 2026-10-21.
+- `test/posts.test.mts`: regression guard that these two posts keep house-attributed quotes only.
+
 ## 2026-10-20: On-page SEO fixes
 
 - Home page (`app/page.tsx`) exports its own `metadata`: a distinct title and a 123-character description, replacing the layout fallback.

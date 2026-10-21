@@ -84,4 +84,19 @@ test("related links point at real posts, and review posts carry review data", ()
   }
 });
 
+// Regression guard for the October 2026 content refresh: these posts once carried
+// quotes attributed to named staff who appear nowhere else in the repo. Their quotes
+// must stay attributed to the house, not to an invented person.
+test("refreshed posts attribute quotes to the house, not invented staff", () => {
+  for (const slug of ["claimittexas-gov-explained", "what-documents-to-claim-unclaimed-property"]) {
+    const post = POSTS.find((p) => p.slug === slug);
+    assert.ok(post, `${slug} is missing from POSTS`);
+    for (const b of post!.body) {
+      if ("quote" in b) {
+        assert.strictEqual(b.quote.attribution, "Frifti Content Team", `${slug} quote attributed to "${b.quote.attribution}" (expected "Frifti Content Team")`);
+      }
+    }
+  }
+});
+
 console.log(`posts.test.mts: ${passed} passed`);
