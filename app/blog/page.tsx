@@ -9,6 +9,11 @@ export const metadata: Metadata = {
   title: "Unclaimed Property Guides",
   description: "Plain-English guides to finding and claiming unclaimed property: timelines, required documents, fees, and multi-state searches.",
   alternates: { canonical: `${SITE.url}/blog` },
+  openGraph: {
+    title: "Unclaimed Property Guides",
+    description: "Plain-English guides to finding and claiming unclaimed property: timelines, required documents, fees, and multi-state searches.",
+    url: `${SITE.url}/blog`,
+  },
 };
 
 const CATEGORY_LABEL: Record<string, string> = {

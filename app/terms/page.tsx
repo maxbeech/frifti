@@ -5,6 +5,11 @@ export const metadata: Metadata = {
   title: "Terms of Use",
   description: "Frifti provides free, general informational guidance about state unclaimed-property programs, not legal, financial, or tax advice, and is not affiliated with NAUPA or any state treasury.",
   alternates: { canonical: `${SITE.url}/terms` },
+  openGraph: {
+    title: "Terms of Use",
+    description: "Frifti provides free, general informational guidance about state unclaimed-property programs, not legal, financial, or tax advice, and is not affiliated with NAUPA or any state treasury.",
+    url: `${SITE.url}/terms`,
+  },
 };
 
 export default function Terms() {

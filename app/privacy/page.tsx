@@ -5,6 +5,11 @@ export const metadata: Metadata = {
   title: "Privacy Policy",
   description: "How Frifti handles your data: the free claim wizard runs entirely in your browser, we never sell personal information, and we only collect the minimum claim details needed to process an optional paid kit.",
   alternates: { canonical: `${SITE.url}/privacy` },
+  openGraph: {
+    title: "Privacy Policy",
+    description: "How Frifti handles your data: the free claim wizard runs entirely in your browser, we never sell personal information, and we only collect the minimum claim details needed to process an optional paid kit.",
+    url: `${SITE.url}/privacy`,
+  },
 };
 
 export default function Privacy() {

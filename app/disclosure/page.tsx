@@ -6,6 +6,11 @@ export const metadata: Metadata = {
   title: "Affiliate Disclosure",
   description: "How Frifti makes money: optional one-time products and a small number of relevant partner links. We never charge you to claim, and never take a cut of your property.",
   alternates: { canonical: `${SITE.url}/disclosure` },
+  openGraph: {
+    title: "Affiliate Disclosure",
+    description: "How Frifti makes money: optional one-time products and a small number of relevant partner links. We never charge you to claim, and never take a cut of your property.",
+    url: `${SITE.url}/disclosure`,
+  },
 };
 
 export default function Disclosure() {
