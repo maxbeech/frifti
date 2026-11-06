@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start -p ${PORT:-3000}",
     "lint": "eslint",
-    "test": "tsx test/run.mts"
+    "test": "tsx test/run.mts && tsx --test test/active-return.test.mts"
   },
   "dependencies": {
     "@sentry/nextjs": "^10.71.0",

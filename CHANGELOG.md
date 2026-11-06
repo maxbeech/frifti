@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-11-06: active return measurement
+
+- Record first measured visits and intentional returns using the shared three-hour, seven-day browser contract.
+- Preserve the product analytics boundary and add regression tests for passive tabs, continuous sessions, consent and storage errors.
+
 ## 2026-10-21: Content refresh (weekly lifecycle pass)
 
 - `claimittexas-gov-explained`: leads with the direct answer and the official site title; removes an unverifiable notarisation threshold, an undated payout timeline, an unsourced popularity claim and a quote attributed to a named staff member who appears nowhere else in the repo. Adds a "what to do after a match / no match" section. `updated` set to 2026-10-21.

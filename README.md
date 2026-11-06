@@ -101,3 +101,9 @@ Without the Stripe vars, the buy buttons show an honest "launching shortly" stat
 Frifti is independent and not affiliated with NAUPA or any state treasury. It provides
 informational guidance, not legal or financial advice. Searching and claiming your own
 unclaimed property from a state is always free — never pay a finder.
+
+## Browser analytics
+
+GA4 is configured with `NEXT_PUBLIC_GA_MEASUREMENT_ID`. The reviewed value action is `claim_plan_generated` (First claim plan built). Portfolio returns use `active-return-v1`: a visible visit followed by a trusted interaction in a new session, at least three hours later and within seven days. Thirty idle minutes separate sessions; timers and passive tabs do not count. These are consented browser cohorts, not cross-device or native-app retention. Only complete seven-day cohorts can be compared.
+
+The generated return modules come from OpenHelm/shared/src through Products/_services/openhelm-analytics. Keep existing consent gates, exclude explicit test identities (`oh_is_test`), and run the return contract tests alongside the full test suite before release. Register the `oh_cohort_date` and `oh_return_contract` event dimensions in the selected GA property.
