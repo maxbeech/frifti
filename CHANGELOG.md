@@ -412,3 +412,5 @@ trust message that the SEO and GEO strategy depends on.
 ## 2026-06-18 — Initial release
 - 50-state unclaimed-property search hub, guided claim wizard, programmatic state/asset
   pages, blog guides, MissingMoney.com comparison, SEO + GEO artifacts.
+
+Generated Node analytics tests assert the empty error count without narrowing the mutable collection to `never[]`; storage-error checks remain unchanged.
