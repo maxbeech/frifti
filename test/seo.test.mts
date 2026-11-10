@@ -21,7 +21,7 @@ test("uses the www origin as the only sitemap origin", () => {
 
 test("lists only static pages and editorial guides; state hubs are noindex and unlisted", () => {
   const sitemapSource = readFileSync(new URL("../app/sitemap.ts", import.meta.url), "utf8");
-  assert.strictEqual(7 + POSTS.length, 32, "unexpected intended sitemap URL count");
+  assert.strictEqual(7 + POSTS.length, 33, "unexpected intended sitemap URL count");
   assert.doesNotMatch(sitemapSource, /statePages|STATES/, "state hubs must not be in the sitemap");
   const hub = readFileSync(new URL("../app/unclaimed-property/[state]/page.tsx", import.meta.url), "utf8");
   assert.match(hub, /robots: \{ index: false, follow: true \}/, "state hubs must be noindex,follow");

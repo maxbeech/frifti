@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-11-10: Weekly post, unclaimed checks
+
+- `unclaimed-checks-uncashed-check-search`: new academy how-to for the "unclaimed checks" keyword (plan section 4, not previously covered). Explains escheatment and dormancy periods, which state holds an uncashed check, a step-by-step free search, documents to prepare, and a worked example labelled as invented. Quote is house-attributed to the asset guide's Wages & Payroll blurb; sources are official state treasury search pages and one compliance firm's Michigan summary.
+- `lib/posts/index.ts`: registers the post.
+- `test/seo.test.mts`: sitemap URL count raised from 32 to 33 to match the new post.
+
 ## 2026-11-06: active return measurement
 
 - Record first measured visits and intentional returns using the shared three-hour, seven-day browser contract.

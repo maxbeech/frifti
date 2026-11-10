@@ -14,6 +14,7 @@ import { post as irsUnclaimedMoneyFederalRefund } from "./data/irs-unclaimed-mon
 import { post as isMissingmoneyComLegit } from "./data/is-missingmoney-com-legit";
 import { post as isUnclaimedPropertySearchFree } from "./data/is-unclaimed-property-search-free";
 import { post as trustAndWillEstatePlanningReview } from "./data/trust-and-will-estate-planning-review";
+import { post as unclaimedChecksUncashedCheckSearch } from "./data/unclaimed-checks-uncashed-check-search";
 import { post as unclaimedInheritanceFromDeceasedRelative } from "./data/unclaimed-inheritance-from-deceased-relative";
 import { post as unclaimedLifeInsurancePolicyFinder } from "./data/unclaimed-life-insurance-policy-finder";
 import { post as unclaimedMoneyByStateDataStudy } from "./data/unclaimed-money-by-state-data-study";
@@ -53,6 +54,7 @@ export const POSTS: Post[] = [
   governmentUnclaimedMoneyFullList,
   unclaimedSettlementMoney,
   unclaimedMoneyInPennsylvaniaFreeSearch,
+  unclaimedChecksUncashedCheckSearch,
 ];
 
 export function getPost(slug: string): Post | undefined {
