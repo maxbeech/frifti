@@ -2,12 +2,12 @@ import type { Post } from "../types";
 
 export const post: Post = {
   slug: "capitalize-401k-finder-review",
-  title: "Capitalize Review: Free 401(k) Finder, Worth It?",
+  title: "Capitalize Review (2026): Is the Free 401(k) Finder Worth It?",
   category: "reviews",
   format: "review",
   author: "Frifti Content Team",
   published: "2026-06-26",
-  updated: "2026-06-26",
+  updated: "2026-11-17",
   description: "An honest Capitalize review: how the free 401(k) finder and rollover service works, real pros and cons, and who it actually suits.",
   primaryKeyword: "capitalize 401k review",
   supportingKeywords: [
@@ -36,7 +36,8 @@ export const post: Post = {
     { p: "We get asked about Capitalize often enough that it deserves a proper look: what it actually does, how the process runs, and where it falls short. This review is based on how the service works and what it publicly commits to doing, not a live account we opened ourselves, and we say that upfront so you can weigh the review accordingly." },
     { h2: "What Capitalize actually does" },
     { p: "Capitalize is a free concierge-style service for consolidating old 401(k) and 403(b) accounts. You give it the names of your former employers, and it does the legwork of tracking down the plan administrator, requesting the paperwork, and moving the balance into an IRA, either a new one it helps you open or one you already have. The company makes money from the IRA providers it partners with, not by charging you a fee, which is the same model **[Trust & Will](https://trustandwill.com/)** and similar services use elsewhere in the industry." },
-    { p: "That's worth repeating because it surprises people: **you don't pay Capitalize anything** to use it. The revenue comes from referral arrangements with the IRA custodians on the other end, not from your pocket." },
+    { p: "That's worth repeating because it surprises people: the **basic 401(k) search and rollover costs you nothing**. The revenue comes from referral arrangements with the IRA custodians on the other end, not from your pocket. Capitalize also offers an optional paid membership, called Capitalize Plus, for customers who want extra services. Its price isn't published in the sources we checked, and it's disclosed only once you create a profile, so check the current terms before you sign up for anything beyond the free service." },
+    { note: "Checked November 2026. Basic service free, with an optional membership (Capitalize Plus) priced on request; sources: [Finder's Capitalize review](https://www.finder.com/capitalize-review) and [ConsumerAffairs' Capitalize page](https://www.consumeraffairs.com/finance/capitalize.html). Third-party reviews only; confirm pricing directly with Capitalize." },
     { h2: "How the process works" },
     { ol: [
       "You sign up and tell Capitalize which companies you've worked for and roughly when. You don't need account numbers or login details to start.",
@@ -58,7 +59,7 @@ export const post: Post = {
         ["Cost", "Free", "Free"],
         ["Effort required", "You contact each administrator yourself", "Capitalize's team does the contacting and paperwork"],
         ["Best for", "One account, or you enjoy the admin", "Several old accounts you want combined into one IRA"],
-        ["Typical timeline", "Varies, depending how quickly you chase it", "Several weeks, since administrators move slowly either way"],
+        ["Typical timeline", "Varies, depending how quickly you chase it", "A few days to a few weeks, since administrators move slowly either way"],
         ["Covers unclaimed state property?", "No, separate free state search needed", "No, 401(k)/403(b) accounts only"],
       ],
     } },
@@ -72,7 +73,7 @@ export const post: Post = {
     { p: "Our overall take: Capitalize does a genuinely useful, narrow job well, for free, and it's honest about what it is. It won't replace a proper unclaimed-property search, and it isn't the right tool if you just want a quick answer rather than a full rollover. Within its lane, though, it saves real time and hassle for a cost of exactly nothing. If you're also chasing an old life insurance policy, our guide to **[finding unclaimed life insurance](/blog/unclaimed-life-insurance-policy-finder)** covers a similar free-first approach." },
   ],
   faq: [
-    { q: "Is Capitalize free to use?", a: "Yes. Capitalize doesn't charge consumers a fee to find or roll over an old 401(k). It earns revenue through arrangements with the IRA providers it works with, not from the person using the service." },
+    { q: "Is Capitalize free to use?", a: "The basic 401(k) search and rollover is free for consumers. Capitalize earns revenue through arrangements with the IRA providers it works with. It also offers an optional paid membership, Capitalize Plus, whose price isn't published, so check the current terms before choosing it." },
     { q: "Is Capitalize legit and safe?", a: "Capitalize is a real, publicly known consolidation service that helps people move old 401(k) balances into an IRA. As with any financial service, only share account details through Capitalize's own verified sign-up flow, and confirm any IRA destination is one you recognise before approving a transfer." },
     { q: "Does Capitalize find unclaimed state property, not just 401(k)s?", a: "No. Capitalize only searches for and rolls over 401(k) and 403(b) workplace retirement accounts you tell it about. It doesn't search state unclaimed-property databases; use your state's free official portal for that separately." },
     { q: "How long does a Capitalize rollover take?", a: "It commonly takes several weeks, mostly because former plan administrators are slow to respond, not because of anything on Capitalize's end. Simple rollovers can be quicker; ones with unresponsive administrators can take longer." },
@@ -87,14 +88,14 @@ export const post: Post = {
     itemName: "Capitalize",
     ratingValue: 4.4,
     pros: [
-      "Free for the consumer to use: Capitalize is paid by IRA providers, not by you",
+      "Basic search and rollover are free: Capitalize is paid mainly by IRA providers, not by you",
       "Handles the tedious paperwork and calls to former plan administrators on your behalf",
       "Rolls your balance into an IRA of your choosing rather than locking you into one option",
       "No account minimum, so it's worth trying even for small old balances",
     ],
     cons: [
       "Only covers 401(k) and 403(b) accounts: it won't find unclaimed state property or other lost money",
-      "The process still takes several weeks in many cases, because former plan administrators respond slowly",
+      "The process can take a few days to several weeks, because former plan administrators respond at their own pace",
       "Best suited to consolidating accounts into an IRA, not to a quick check of whether a balance exists",
     ],
   },

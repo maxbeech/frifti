@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-11-17: Content refresh (lifecycle pass)
+
+- `capitalize-401k-finder-review`: title now carries the year and the intent ("Is the Free 401(k) Finder Worth It?"). The "you don't pay anything" claim is qualified: the basic search and rollover are free, but an optional paid membership (Capitalize Plus) exists with its price unpublished. Timeline changed to "a few days to a few weeks" in the table, pros/cons and FAQ. Sources are cited in a note (Finder, ConsumerAffairs). `updated` set to 2026-11-17 after the substantive change.
+- Not changed: `how-to-find-unclaimed-money-complete-guide` is a CONSOLIDATE candidate but is the hub linked from about 17 posts and 3 redirects; deferred pending a decision on the surviving URL.
+
 ## 2026-11-10: Weekly post, unclaimed checks
 
 - `unclaimed-checks-uncashed-check-search`: new academy how-to for the "unclaimed checks" keyword (plan section 4, not previously covered). Explains escheatment and dormancy periods, which state holds an uncashed check, a step-by-step free search, documents to prepare, and a worked example labelled as invented. Quote is house-attributed to the asset guide's Wages & Payroll blurb; sources are official state treasury search pages and one compliance firm's Michigan summary.
